@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <title>Demonstration - Ajax page swap with history support and optional effects with jQuery Kool Swap!</title>
+    <meta name="author" content="Joscha Schmidt">
+    <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../css/kool-swap.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+    <!-- script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script -->
+    <script src="/demo/js/jquery-ui-1.10.2.custom.min.js"></script>
+</head>
+
+<body>
+    <div class="tip" id="animType">
+       <p><span aria-hidden="true" data-icon="&#xe002;"></span>Swap type:</p>
+       <button data-anim-type="ksFog" class="active"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Fog</button>
+       <button data-anim-type="ksKangaroo"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Kangaroo</button>
+       <button data-anim-type="ksVelociraptor"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Velociraptor</button>
+    </div>
+    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span>Download on GitHub</a>
+    
+    <div id="main" class="main">
+        <header>
+		    <nav class="kool-swap">
+	            <div class="tip" id="tipLeft">
+	                Navigate to see the plugin in action.
+	            </div>
+	
+		        <ul>
+                    <li><a class="active" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
+                    <li><a href="/demo/the-how.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
+                    <li><a href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
+                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
+		        </ul>
+		    </nav>
+        </header>
+        
+        <h1><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap<sup>&beta;</sup></h1>
+        
+        <p>Swap pages in a cool and functional way.</p>
+        
+        <p class="kool-swap">
+            Kool Swap enables impressively ajax page load support for websites. Just <a href="the-how.html">tell the plugin</a> what should be switched and see the magic!<br>
+        </p>
+        
+        <section class="infoBox clear" style="margin-bottom:20px">
+            <div><h2>Let's talk about the advantages…</h2></div>
+            <div class="info">
+                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Go back and forward</h2><br>
+                The url changes on page switch because of the intregated html5 history API. Browsers forward and back buttons work!
+            </div> 
+            
+            <div class="info">
+                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Title, classes and IDs are transfered</h2><br>
+                The plugin extracts the <code>&lt;title&gt;</code> as well as <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> classes and ids and replaces them with the swapBoxIn page values. 
+            </div>
+            
+            <div class="info">
+                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Callback events</h2><br>
+                document.ready() functions can be executed with plugin triggered callback events after load or animation of the loaded contents.
+            </div>
+        </section>
+        
+        <section class="infoBox warning clear">
+            <div><h2>&hellip;and about potential problems</h2></div>
+            <div class="info">
+                <span aria-hidden="true" data-icon="&#xe003;"></span><h2>Well formed HTML</h2><br>
+                Kool Swap needs well formed HTML to work with. Display problems could happen on documents with markup errors.
+            </div> 
+            
+            <div class="info kool-swap">
+                <span aria-hidden="true" data-icon="&#xe003;"></span><h2>Remember it's beta!</h2><br>
+                Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. <a href="examples">Read more.</a>  
+            </div>
+            
+        </section>
+        
+	    <footer>
+            <h2>This is Kool Swap!</h2>
+	        
+	        <nav>
+	            <h2>See also:</h2>
+	            <ul>
+	                <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
+	            </ul>
+	        </nav>
+	    </footer>
+    </div>
+    
+    <script src="/demo/js/jquery.animate-enhanced.min.js"></script>
+    <script src="/js/jquery.kool-swap.js"></script>
+    <script src="/demo/js/demo.js"></script>
+    <script src="/demo/js/googleanalytics.js"></script>
+    
+</body>
+</html>

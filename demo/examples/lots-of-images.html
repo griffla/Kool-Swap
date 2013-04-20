@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <title>Lots of images - Ajax page swap with history support and optional effects with Kool Swap!</title>
+    <meta name="author" content="Joscha Schmidt">
+    <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/css/kool-swap.css">
+    <link rel="stylesheet" type="text/css" href="/demo/css/demo.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <div class="tip" id="animType">
+       <p><span aria-hidden="true" data-icon="&#xe002;"></span>Swap type:</p>
+       <button data-anim-type="ksFog" class="active"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Fog</button>
+       <button data-anim-type="ksKangaroo"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Kangaroo</button>
+       <button data-anim-type="ksVelociraptor"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Velociraptor</button>
+    </div>
+    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span>Download on GitHub</a>
+        
+    <div id="main" class="main">
+        <header>
+            <nav class="kool-swap">
+                <div class="tip" id="tipLeft">
+                    Navigate to see the plugin in action.
+                </div>
+    
+                <ul>
+                    <li><a id="ksIndex" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
+                    <li><a id="ksHow" href="/demo/the-how.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
+                    <li><a id="ksOptions" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
+                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
+                </ul>
+            </nav>
+        </header>
+	    
+        <section class="demobox">
+            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Lots of images</h1>
+            
+            <p>Images are preloaded before the page swap by default. Set the option "checkForImages" to false if you don't need this.</p> 
+            
+            <a href="/demo/images/4891344276_c2a8cb9856_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4891344276_c2a8cb9856_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <a href="/demo/images/4657857004_7ebf9da1b0_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4657857004_7ebf9da1b0_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <br>
+            <a href="/demo/images/3900502523_8419932a53_o.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3900502523_cc29fe3113_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <a href="/demo/images/3706977488_08208d18db_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3706977488_08208d18db_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <br>
+            <a href="/demo/images/3819663832_070dbedbd9_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3819663832_070dbedbd9_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <a href="/demo/images/4990386275_4ab31b9df7_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4990386275_4ab31b9df7_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <br>
+            <a href="/demo/images/4553811718_1e6ee5eb19_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4553811718_1e6ee5eb19_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <br>
+            <a href="/demo/images/5565141297_f0ef0d567d_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/5565141297_f0ef0d567d_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+            <a href="/demo/images/5535102989_d82a73e30a_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/5535102989_d82a73e30a_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
+
+        </section>
+        
+	    <footer>
+            <h2>This is Kool Swap!</h2>
+	        
+	        <nav>
+	            <h2>See also:</h2>
+	            <ul>
+	                <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
+	            </ul>
+	        </nav>
+	    </footer>
+    </div>
+    
+    <script src="/demo/js/jquery.animate-enhanced.min.js"></script>
+    <script src="/js/jquery.kool-swap.js"></script>
+    <script src="/demo/js/demo.js"></script>
+    <script src="/demo/js/googleanalytics.js"></script>
+    
+</body>
+</html>

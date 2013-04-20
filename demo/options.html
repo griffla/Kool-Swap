@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <title>Options - jQuery Kool Swap!</title>
+    <meta name="author" content="Joscha Schmidt">
+    <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../css/kool-swap.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+    <!-- script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script -->
+    <script src="/demo/js/jquery-ui-1.10.2.custom.min.js"></script>
+</head>
+
+<body>
+    <div class="tip" id="animType">
+       <p><span aria-hidden="true" data-icon="&#xe002;"></span>Swap type:</p>
+       <button data-anim-type="ksFog" class="active"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Fog</button>
+       <button data-anim-type="ksKangaroo"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Kangaroo</button>
+       <button data-anim-type="ksVelociraptor"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Velociraptor</button>
+    </div>
+    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span>Download on GitHub</a>
+        
+    <div id="main" class="main">
+        <header>
+            <nav class="kool-swap">
+                <div class="tip" id="tipLeft">
+                    Navigate to see the plugin in action.
+                </div>
+    
+                <ul>
+                    <li><a href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
+                    <li><a href="/demo/the-how.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
+                    <li><a class="active" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
+                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
+                </ul>
+            </nav>
+        </header>
+	    
+        <section class="demobox">
+            <h1><span aria-hidden="true" data-icon="&#xe00f;"></span>Options</h1>
+            
+            <p>These options are available to configure the plugin for your needs. The default animation type - if no easing is defined - is fade. Define easings to change the animation type.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>swapBox</td>
+                        <td>body > :first-child</td>
+                        <td>Define the element that should be swaped. It can be any CSS selector but ideally an ID.<br><em class="warning"><span aria-hidden="true" data-icon="&#xe003;"></span>It is strongly recommended to define a specific swapBox selector! Some browser plugins create hidden elements that will be used from Kool Swap if they exist.</em></td>
+                    </tr>
+                    <tr>
+                        <td>swapBoxOffsetTop</td>
+                        <td></td>
+                        <td>Define a top offset for the swapBox.</td>
+                    </tr>
+                    <tr>
+                        <td>swapTriggerBox</td>
+                        <td>.kool-swap</td>
+                        <td>Define the element that contains the triggers that will be used for a kool swap.</td>
+                    </tr>
+                    <tr>
+                        <td>swapTrigger</td>
+                        <td>a</td>
+                        <td>Trigger elements inside swapTriggerBox.</td>
+                    </tr>
+                    <tr>
+                        <td>direction</td>
+                        <td></td>
+                        <td>No direction means that pages are faded in/out. Possible values are: left-to-right, right-to-left, top-to-bottom and bottom-to-top.</td>
+                    </tr>
+                    <tr>
+                        <td>loadErrorMessage</td>
+                        <td>The requested page was not found.</td>
+                        <td>Change to show another text on error.</td>
+                    </tr>
+                    <tr>
+                        <td>loadErrorBacklinkText</td>
+                        <td>Go back to the last page</td>
+                        <td>Change to show another back link text</td>
+                    </tr>
+                    <tr>
+                        <td>inDuration</td>
+                        <td>700</td>
+                        <td>Duration for the loading page.</td>
+                    </tr>
+                    <tr>
+                        <td>outDuration</td>
+                        <td>500</td>
+                        <td>Duration for the unloading page.</td>
+                    </tr>
+                    <tr id="swapBoxSiblings">
+                        <td>swapBoxSiblings</td>
+                        <td></td>
+                        <td>Are there jumpy siblings? Define them here and they will fade out/in on page swap.</td>
+                    </tr>
+                    <tr>
+                        <td>topToBottom</td>
+                        <td>false</td>
+                        <td>Set to true to swap pages from top to bottom.</td>
+                    </tr>
+                    <tr>
+                        <td>leftToRight</td>
+                        <td>false</td>
+                        <td>Set to true to swap pages from left to right.</td>
+                    </tr>
+                    <tr>
+                        <td>inEasing</td>
+                        <td></td>
+                        <td>Easing for the page swapped in. This only takes effect is topToBottom or leftToRight is defined.</td>
+                    </tr>
+                    <tr>
+                        <td>outEasing</td>
+                        <td></td>
+                        <td>Easing for the page swapped out. This only takes effect is topToBottom or leftToRight is defined.</td>
+                    </tr>
+                    <tr>
+                        <td>checkForImages</td>
+                        <td>true</td>
+                        <td>All images in the page that is currently loaded are reloaded before the page swap will be executed.</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </section>
+            
+        <section>
+            <h1>Events</h1>
+            <p>
+                <code>$(document).ready()</code> function wont be triggered after a Kool Swap page load. Other plugins or ready-functions should be reinitialised after the load or animation of a page executed by Kool Swap. Use
+                the callback events to do exactly that. 
+            </p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>ksLoadCallback</td>
+                        <td>Triggered after the page is loaded.</td>
+                    </tr>
+                    <tr>
+                        <td>ksSwapCallback</td>
+                        <td>Triggered after the page is loaded <strong>and</strong> animated.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <pre>
+                <code>
+                    $(document).on('ksLoadCallback', function() {<br>
+                     &nbsp;&nbsp;&nbsp;readyFunctions();<br>
+                    });
+                </code>
+            </pre>
+            
+            <p></p>
+        </section>
+        
+        <section>
+            <h1>Methods</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>update</td>
+                        <td>Update Kool Swap settings.</td>
+                    </tr>
+                    <tr>
+                        <td>destroy</td>
+                        <td>Unbind Kool Swap click event from Kool Swap triggers.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <pre>
+                <code>
+                    $.koolSwap('update', {<br>
+                     &nbsp;&nbsp;&nbsp;direction : 'top-to-bottom',<br>
+                    });
+                </code>
+            </pre>
+        </section>      
+        
+        
+	    <footer>
+	        <h2>This is Kool Swap!</h2>
+	        
+	        <nav>
+	            <h2>See also:</h2>
+	            <ul>
+                    <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
+	            </ul>
+	        </nav>
+	    </footer>
+    </div>
+    
+    <script src="/demo/js/jquery.animate-enhanced.min.js"></script>
+    <script src="/js/jquery.kool-swap.js"></script>
+    <script src="/demo/js/demo.js"></script>
+    <script src="/demo/js/googleanalytics.js"></script>
+    
+</body>
+</html>
