@@ -1,7 +1,7 @@
 {
     "name": "Kool-Swap",
     "title": "Kool Swap",
-    "description": "Kool Swap enables impressively ajax page load support for websites. Just tell the plugin what should be switched and what are the triggers and see the magic!",
+    "description": "Kool Swap enables impressively ajax page load support with history for websites. Just tell the plugin what should be switched and swap pages in a nice way!",
     "keywords": [
         "ajax",
         "swap",
@@ -11,7 +11,7 @@
         "ui",
         "image"
     ],
-    "version": "0.1.0",
+    "version": "0.1.2",
     "author": {
         "name": "Joscha Schmidt",
         "email" : "smith.griffla@gmail.com",

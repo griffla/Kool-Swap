@@ -1,5 +1,5 @@
 /*
-Kool Swap v0.1
+Kool Swap v0.1.2
 by Joscha Schmidt - http://www.itsjoe.de
 
 For more information, visit:
@@ -35,9 +35,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			methods.settings = $.extend({}, methods.defaults, options);
 			var hasPushstate = (window.history && history.pushState != 0),
 				$swapBox = $(methods.settings.swapBox),
-				swapBoxClass = $swapBox.attr('class'),
-				swapBoxId = $swapBox.attr('id'),
-				swapBoxTagName = $swapBox.prop("tagName"),
+				//swapBoxId = $swapBox.attr('id'),
 				swapTriggerBox = methods.settings.swapTriggerBox,
 				swapTrigger = methods.settings.swapTrigger;
 			
@@ -62,7 +60,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				.off('touchstart', swapTriggerBox + ' ' + swapTrigger)
 				.on('touchstart', swapTriggerBox + ' ' + swapTrigger, function(e) {
 					var item = $(this);
-					methods.ksCollectLoadPageInfo(e, item, hasPushstate, swapBoxId, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger);
+					methods.ksCollectLoadPageInfo(e, item, hasPushstate, swapTriggerBox, swapTrigger);
 				});
 			} else {
 				$(document)
@@ -77,7 +75,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 							$swapBoxIn = 'ks-swap-box-in';
 							if (!$('.ks-swap-box-in').length) {
 								var item = $(this);
-								methods.ksCollectLoadPageInfo(e, item, hasPushstate, swapBoxId, $swapBoxIn, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger);
+								methods.ksCollectLoadPageInfo(e, item, hasPushstate, $swapBoxIn, swapTriggerBox, swapTrigger);
 							} else {
 								return false;
 							}
@@ -90,7 +88,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				});
 			}
 		},
-		ksCollectLoadPageInfo: function(e, item, hasPushstate, swapBoxId, $swapBoxIn, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger) {
+		ksCollectLoadPageInfo: function(e, item, hasPushstate, $swapBoxIn, swapTriggerBox, swapTrigger) {
 			if (hasPushstate) {
 				e.preventDefault();
 				var url = item.attr('href');
@@ -118,16 +116,16 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			        	break;
 				}
 				
-				methods.ksLoadPage(url, swapBoxId, $swapBoxIn, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger);
+				methods.ksLoadPage(url, $swapBoxIn, swapTriggerBox, swapTrigger);
 				history.pushState({'url':url}, null, url); // Update the url
 				$('html').attr('data-ks-history-pushed', 'true');
 			}
 		},
-		ksLoadPage: function(href, swapBoxId, swapBoxIn, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger) {
+		ksLoadPage: function(href, swapBoxIn, swapTriggerBox, swapTrigger) {
 			var $swapBox = $(methods.settings.swapBox); // redefine $swapBox variable
 			if (href != '') {
 				var $swapBox = $(methods.settings.swapBox); // redefine $swapBox variable
-				methods.ksAddSwapBoxIn(swapBoxTagName, swapBoxIn, swapBoxClass);
+				methods.ksAddSwapBoxIn(swapBoxIn);
 				$.ajax({
 					type: 'GET',
 					url: href,
@@ -141,9 +139,9 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 					success: function(data) {
 						
 						if (methods.settings.swapBoxSiblings) {
-							methods.ksFadeSiblings(data, swapBoxId, swapBoxIn);
+							methods.ksFadeSiblings(data, swapBoxIn);
 						} else {
-							methods.ksPositionSwapBox(data, swapBoxId, swapBoxIn);
+							methods.ksPositionSwapBox(data, swapBoxIn);
 						}
 					},
 					dataType: 'html'
@@ -166,22 +164,22 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 		ksRemoveLoadBox: function() {
 			$('#ks-loading-box').fadeOut('fast').remove();
 		},
-		ksAddSwapBoxIn: function(swapBoxTagName, swapBoxIn, swapBoxClass) {
-			var $swapBox = $(methods.settings.swapBox); // redefine $swapBox variable
-			//$swapBox.after('<' + swapBoxTagName.toLowerCase() + ' class="ks-swap-box-in ' + (typeof swapBoxClass != 'undefined' ? swapBoxClass : '') + '" id="' + swapBoxIn + '"></' + swapBoxTagName.toLowerCase() + '>'); // create the temp container
-			// swapBoxOut classes are no longer transfered
+		ksAddSwapBoxIn: function(swapBoxIn) {
+			var $swapBox = $(methods.settings.swapBox), // redefine $swapBox variable
+				swapBoxTagName = $swapBox.prop('tagName');
+
 			$swapBox.after('<' + swapBoxTagName.toLowerCase() + ' class="ks-swap-box-in" id="' + swapBoxIn + '"></' + swapBoxTagName.toLowerCase() + '>'); // create the temp container
 		},
-		ksFadeSiblings: function(data, swapBoxId, swapBoxIn) {
+		ksFadeSiblings: function(data, swapBoxIn) {
 			var $swapBox = $(methods.settings.swapBox); // redefine $swapBox variable
 			
 			$swapBox
 			.siblings(methods.settings.swapBoxSiblings)
 			.fadeOut(200, function() {
-				methods.ksPositionSwapBox(data, swapBoxId, swapBoxIn);
+				methods.ksPositionSwapBox(data, swapBoxIn);
 			});
 		},
-		ksPositionSwapBox: function(data, swapBoxId, swapBoxIn) {
+		ksPositionSwapBox: function(data, swapBoxIn) {
 			var $swapBox = $(methods.settings.swapBox), // redefine $swapBox variable
 				mainOffset = $swapBox.position(),
 				mainWidth = $swapBox.width(),
@@ -198,10 +196,11 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				marginLeft: 0,
 				width: mainWidth,
 			});
-			methods.ksPrepareSwap(data, swapBoxId, swapBoxIn, mainOffset, swapBoxLeftAbsolute, mainWidth);
+			methods.ksPrepareSwap(data, swapBoxIn, mainOffset, swapBoxLeftAbsolute, mainWidth);
 		},
-		ksPrepareSwap: function(data, swapBoxId, swapBoxIn, mainOffset, swapBoxLeftAbsolute, mainWidth) {
+		ksPrepareSwap: function(data, swapBoxIn, mainOffset, swapBoxLeftAbsolute, mainWidth) {
 			var $swapBox = $(methods.settings.swapBox), // redefine $swapBox variable
+				swapBoxId = $swapBox.attr('id'),
 				$swapBoxIn = $('#' + swapBoxIn),
 				htmlId = data.match(/<\/*html\s+.*id="([^"].*)".*>/), // exclude html classes
 				bodyId = data.match(/<\/*body\s+.*id="([^"].*)".*>/), // exclude body classes
@@ -385,9 +384,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 		listenToPushstate : function(options) { // Listen to the pushstate to make back/forward browser buttons work
 			var hasPushstate = (window.history && history.pushState != 0),
 				$swapBox = $(methods.settings.swapBox),
-				swapBoxClass = $swapBox.attr('class'),
-				swapBoxId = $swapBox.attr('id'),
-				swapBoxTagName = $swapBox.prop("tagName"),
+				//swapBoxId = $swapBox.attr('id'),
 				swapTriggerBox = methods.settings.swapTriggerBox,
 				swapTrigger = methods.settings.swapTrigger;
 
@@ -419,7 +416,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 					        	return false;
 					        	break;
 						}
-						methods.ksLoadPage(locationPath, swapBoxId, $swapBoxIn, swapBoxClass, swapBoxTagName, swapTriggerBox, swapTrigger);
+						methods.ksLoadPage(locationPath, $swapBoxIn, swapTriggerBox, swapTrigger);
 					}
 					e.stopPropagation();
 				});
