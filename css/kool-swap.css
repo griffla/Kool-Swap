@@ -1,10 +1,5 @@
 @CHARSET "UTF-8";
-
-.ks-swap-box-in {
-	display: none;
-	position: absolute;
-}
-
+/* This stylesheet only contains the loading box styles */
 #ks-loading-box {
 	background: rgba(255, 255, 255, .5);
 	border-radius: 4px;
