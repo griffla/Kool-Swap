@@ -56,24 +56,56 @@
         </header>
 	    
         <section class="demobox">
-            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Lots of images</h1>
+            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Multiple Instances</h1>
             
-            <p>Images are preloaded before the page swap by default. Set the option "preloadImages" to false if you don't need this.</p> 
+            <p>Kool Swap can be used sitewide and/or with a selector.</p> 
             
-            <a href="/demo/images/4891344276_c2a8cb9856_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4891344276_c2a8cb9856_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <a href="/demo/images/4657857004_7ebf9da1b0_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4657857004_7ebf9da1b0_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <br>
-            <a href="/demo/images/3900502523_8419932a53_o.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3900502523_cc29fe3113_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <a href="/demo/images/3706977488_08208d18db_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3706977488_08208d18db_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <br>
-            <a href="/demo/images/3819663832_070dbedbd9_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/3819663832_070dbedbd9_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <a href="/demo/images/4990386275_4ab31b9df7_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4990386275_4ab31b9df7_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <br>
-            <a href="/demo/images/4553811718_1e6ee5eb19_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4553811718_1e6ee5eb19_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <br>
-            <a href="/demo/images/5565141297_f0ef0d567d_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/5565141297_f0ef0d567d_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-            <a href="/demo/images/5535102989_d82a73e30a_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/5535102989_d82a73e30a_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
-
+            <ul class="tabs">
+                <li><a href="/demo/index.html" data-ks-load-selector="#advantages">Kool Swap Advantages</a></li>
+                <li><a href="/demo/options.html" data-ks-load-selector="#events">Events</a></li>
+            </ul>
+            
+            <section id="tabContent" class="tabContent">
+                Click a tab to switch content!
+            </section>
+            
+            <div class="description">
+	            <h2>Usage</h2>
+	
+				<p>Unlike the sitewide initialisation the selector has to be added in to the initialisation code:</p>
+				
+	            <div>
+	                <pre>
+	                    <code>
+	                   		$('#tabContent').koolSwap({<br>
+							&nbsp;&nbsp;&nbsp;swapTriggerBox : '.tabs',<br>
+							&nbsp;&nbsp;&nbsp;bouncingBoxes : '.description, footer',<br>
+							&nbsp;&nbsp;&nbsp;direction: 'left-to-right',<br>
+							&nbsp;&nbsp;&nbsp;<a href="/demo/options.html#moveSwapBoxClasses">moveSwapBoxClasses</a> : true,<br>
+							});
+	                    </code>
+	                </pre>
+	            </div>
+	
+				<p>Define the contents with the href to the target page and a selector with the <code>data-ks-load-selector</code> attribute to load the contents from:</p>
+				
+	            <div>
+	                <pre>
+	                    <code>
+	                   		&lt;a href="/demo/options.html" data-ks-load-selector="#events"&gt;Show events&lt;/a&gt;
+	                    </code>
+	                </pre>
+	            </div>
+	            
+                <p class="info kool-swap">
+                	<span aria-hidden="true" data-icon="&#xe004;"></span>
+	                Remember to reinitiate with the <a href="/demo/options.html#events">ksSwapCallback</a> event.
+	            </p> 
+            
+	            
+	       </div>
+            
+            
         </section>
         
 	    <footer>
