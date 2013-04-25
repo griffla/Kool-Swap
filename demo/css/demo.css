@@ -12,14 +12,6 @@ body {
 	font-smoothing: antialiased;
 }
 
-
-[data-icon]:before {
-  font-family: Notice;
-  content: attr(data-icon);
-  speak: none;
-}
-
-
 @font-face {
 	font-family: 'icomoon';
 	src:url('../fonts/icomoon/icomoon.eot');
@@ -29,9 +21,8 @@ body {
 		url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
+} 
 
-/* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
 	content: attr(data-icon);
 	font-family: 'icomoon';
@@ -44,7 +35,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-/* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon-after]:after {
 	content: attr(data-icon-after);
 	font-family: 'icomoon';
@@ -131,6 +121,10 @@ table th {
 	padding: .3em .8em;
 }
 
+.obsolet {
+	color: #999;
+}
+
 p {
 	font-size: 1.13rem;
 	margin: 0 auto 10px;
@@ -179,21 +173,25 @@ footer a:hover {
 #dl {
 	background: #000;
 	border: 4px;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
 	color: #fff;
-	padding: .2em 6em;
+	font-weight: 400;
+	padding: 10px 10px 10px 15px;
 	position: fixed;
-	right: -75px;
-	top: 24px;
+	right: 0;
+	top: 35px;
 	text-decoration: none;
-	-moz-transform: rotate(21deg);
-	-webkit-transform: rotate(21deg);
-	-o-transform: rotate(21deg);
-	-ms-transform: rotate(21deg);
 	z-index: 99;
 }
 
+#dl [data-icon] {
+	font-size: 1.5em;
+}
+
 .main {
-	margin: 15px 0 0;
+	margin: 15px auto 0;
+	width: 980px;
 }
 
 .main > nav {
@@ -208,6 +206,7 @@ nav ul {
 
 header {
 	display: inline-block;
+	font-size: 15px;
 	margin: 0 0 0 0;
 
 }
@@ -291,28 +290,6 @@ nav ul li a [data-icon] {
 	top: 50%;
 }
 
-#animType {
-	background-color: #fff;
-	border-top: 0;
-	border-right: 0;
-	border-bottom-left-radius: 4px;
-	margin: 0 auto;
-	padding: 1px 3px;
-/*	position: fixed;*/
-/*	right: 0; */
-	top: 0;
-	z-index: 3;
-}
-
-#animType p {
-	color: #00dff3;
-	float: left;
-	font-size: .9em;
-	font-weight: 900;
-	line-height: 2.2em; 
-	margin: 0 1.5em 0;
-}
-
 table {
 	border-collapse: collapse;
 	margin: 0 0 40px;
@@ -391,14 +368,47 @@ td:first-child {
 	font-weight: 400;
 }
 
+#settings {
+	background-color: #fff;
+	border-top: 0;
+	border-right: 0;
+	border-bottom-left-radius: 4px;
+	margin: 0 auto;
+	padding: 1px 3px;
+	top: 0;
+	z-index: 3;
+}
+
+#settings h2 {
+	background: none; 
+	color: #000;
+	display: inline-block;
+	font-size: 1.7em;
+	font-weight: 300;
+	line-height: 1.1em;
+	margin: 0 8px 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+#settings .buttons {
+	display: inline-block;
+	padding-right: 20px;
+}
+
+#settings .buttons:last-child {
+	padding-right: 8px;
+}
+
 button {
 	border: 1px solid #e1e1e1;
-	border-radius: 2px;
+	border-left-width: 0;
 	color: #ccc;
-	font-size: 12px;
+	font-size: 16px;
+	font-weight: 100;
 	line-height: 1em; 
-	padding: 4px 8px 5px 6px;
-/*	text-transform: uppercase;*/
+	margin: 0;
+	padding: 4px 7px 5px;
 
 	background: #f2f2f2;
 	background: -moz-linear-gradient(top,  #f2f2f2 0%, #e0e0e0 100%);
@@ -410,8 +420,28 @@ button {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#e0e0e0',GradientType=0 );
 }
 
+.buttons button {
+	float: left;	
+}
+
+.buttons button:first-child {
+	border-left-width: 1px;
+	border-bottom-left-radius: 2px;
+	border-top-left-radius: 2px;
+}
+
+.buttons button:last-child {
+	border-bottom-right-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+
+#settings button [data-icon]::before {
+	padding: 0;
+}
+
 button.active {
-	border: 1px solid #000;
+	border-color: #000;
 	color: #fff;
 
 	background: #000;
@@ -421,11 +451,7 @@ button.active {
 	background: -o-linear-gradient(top,  #444 0%,#000 100%);
 	background: -ms-linear-gradient(top,  #444 0%,#000 100%);
 	background: linear-gradient(to bottom,  #444 0%,#000 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444', endColorstr='#000',GradientType=0 );
-}
-
-button.active [data-icon]:before {
-	content: attr(data-icon-active);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#000000',GradientType=0 );
 }
 
 button:hover:not(.active) {
@@ -453,7 +479,7 @@ button:hover:not(.active) {
 	border-radius: 3px;
 	color: #034953;
 	float: left;
-	margin: 0 5px;
+	margin: 0 5px 5px;
 	max-width: 290px;
 	padding: 10px 10px 15px;
 	text-align: left;
@@ -475,6 +501,39 @@ sup {
 	font-weight: 300;
 }
 
+ul.tabs {
+	list-style: none;
+}
+
+ul.tabs li {
+	display: inline-block;
+}
+
+ul.tabs li a {
+	background-color: #00dff3;
+	border-radius: 3px;
+	color: #fff;
+	display: inline-block;
+	line-height: 1.7em;
+	padding: 5px 5px 7px;
+	text-decoration: none;
+}
+
+ul.tabs li a.active {
+	background-color: #eee;
+	color: #00dff3;
+	font-weight: 400;
+}
+
+.tabContent {
+	background-color: #fff;
+	border: 1px solid #00dff3;
+	border-radius: 3px;
+	margin: 0 auto 25px;
+	padding: 20px;
+	max-width: 980px;
+}
+
 
 /* Clearing floats */
 .clear:after,
@@ -493,9 +552,39 @@ sup {
 }
 
 
+.tooltip {
+	position: relative;
+}
 
+/* Tooltips */
+.tooltip:hover:before{
+	background-color: #333;
+	background-color: rgba(0, 0, 0, .75);
+	border-radius: 2px;
+	color: #ffffff;
+	content: attr(title);
+	display: block;
+	font: 300 12px 'Lato', serif;
+	height: 30px;
+	left: 0;
+	line-height: 30px;
+	padding: 0 15px;
+	position: absolute;
+	bottom: -40px;
+	white-space: nowrap;
+}
 
-
+.tooltip:hover:after{
+	border: 7px solid transparent;
+	border-bottom-color: #333;
+	border-bottom: 7px solid rgba(0, 0, 0, .75);
+	border-top: 0;
+	content: "";
+	display: block;
+	left: 10px;
+	position: absolute;
+	bottom: -10px;
+}
 
 
 

@@ -1,5 +1,11 @@
 $(function() {
-	//readyFuntions(); // Load the readyFunctions on page $(document).ready()
+	$.koolSwap({
+		swapBox : '#main',
+		outDuration : 550,
+		inDuration : 600,
+	});
+
+	readyFunctions(); // Load the readyFunctions on page $(document).ready()
 	
 	$(document)
 	.on('click', 'header nav a.active', function(e) {
@@ -9,47 +15,70 @@ $(function() {
 		  }
 	})
 	.on({
-		ksLoadCallback: function() {
-		},
 		ksSwapCallback: function() {
+			readyFunctions();
 		},
-		ksFog: function() {
-			$.koolSwap('update',{
+		ksFade: function() {
+			$.koolSwap({
 				outEasing : '',
 				inEasing : '',
-				outDuration : 400,
-				inDuration : 600,
 				direction: '',
 			});
 		},
-		ksKangaroo: function() {
-			$.koolSwap('update',{
-				outEasing : 'easeInBack',
-				inEasing : 'easeInSine',
-				outDuration : 400,
-				inDuration : 650,
+		ksTopToBottom: function() {
+			$.koolSwap({
 				direction: 'top-to-bottom',
-//				direction: 'bottom-to-top',
+				outEasing : 'easeInSine',
+				inEasing : 'easeInSine',
 			});
 		},
-		ksVelociraptor: function() {
-			$.koolSwap('update',{
+		ksBottomToTop: function() {
+			$.koolSwap({
+				direction: 'bottom-to-top',
+				outEasing : 'easeInSine',
+				inEasing : 'easeInSine',
+			});
+		},
+		ksLeftToRight: function() {
+			$.koolSwap({
+				direction: 'left-to-right',
 				outEasing : 'easeInOutCirc',
 				inEasing : 'easeOutQuad',
-				outDuration : 700,
-				inDuration : 600,
+			});
+		},
+		ksRightToLeft: function() {
+			$.koolSwap({
 				direction: 'right-to-left',
-//				direction: 'left-to-right',
+				outEasing : 'easeInOutCirc',
+				inEasing : 'easeOutQuad',
+			});
+		},
+		ksSlow: function() {
+			$.koolSwap({
+				outDuration : 1250,
+				inDuration : 1260,
+			});
+		},
+		ksFast: function() {
+			$.koolSwap({
+				outDuration : 650,
+				inDuration : 700,
+			});
+		},
+		ksUltraFast: function() {
+			$.koolSwap({
+				outDuration : 250,
+				inDuration : 300,
 			});
 		},
 		ksSiblingsDemo: function() {
-			$.koolSwap('update',{
-				swapBoxSiblings : '#demoSibling1, #demoSibling2',
+			$.koolSwap({
+				bouncingBoxes : '#bouncingBox1, #bouncingBox2',
 			});
 		},
 		ksSiblingsDemoReset: function() {
-			$.koolSwap('update',{
-				swapBoxSiblings : '',
+			$.koolSwap({
+				bouncingBoxes : '',
 			});
 		}
 	})
@@ -60,26 +89,14 @@ $(function() {
 		$(document).trigger('ksSiblingsDemoReset');
 	});
 
-	$.koolSwap({
-		swapBox : '#main',
-		outDuration : 200,
-		inDuration : 300,
-	});
-
-	function is_touch_device() { // check if the plugin's running on a touch device
-		var el = document.createElement('div');
-		el.setAttribute('ongesturestart', 'return;');
-		return typeof el.ongesturestart === "function";
-	};
-
 	if (is_touch_device()) {
-		$('#animType')
+		$('#settings')
 		.on('touchstart', 'button', function(e) {
 			var $this = $(this);
 			changeAnimationType($this);
 		});
 	} else {
-		$('#animType')
+		$('#settings')
 		.on('click', 'button', function(e) {
 			var $this = $(this);
 			changeAnimationType($this);
@@ -88,18 +105,30 @@ $(function() {
 });
 
 function changeAnimationType($this) {
-	var animType = $this.attr('data-anim-type');
-	
+	var settings = $this.attr('data-anim-type');
 	$this
 	.siblings('.active')
 	.removeClass('active')
 	.end()
 	.addClass('active');
 	
-	$(document).trigger(animType);
-	
-	$('header')
-	.find('nav')
-		.find('a.active')
-			.click();
+	$(document).trigger(settings);
 }
+
+function readyFunctions() {
+	$('#tabContent').koolSwap({
+		swapTriggerBox : '.tabs',
+		bouncingBoxes : '.description, footer',
+		direction: 'left-to-right',
+		moveSwapBoxClasses : true,
+		positionType: 'absolute',
+	});
+}
+
+
+function is_touch_device() { // check if the plugin's running on a touch device
+	var el = document.createElement('div');
+	el.setAttribute('ongesturestart', 'return;');
+	return typeof el.ongesturestart === "function";
+};
+

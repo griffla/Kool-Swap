@@ -18,13 +18,26 @@
 </head>
 
 <body>
-    <div class="tip" id="animType">
-       <p><span aria-hidden="true" data-icon="&#xe002;"></span>Swap type:</p>
-       <button data-anim-type="ksFog" class="active"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Fog</button>
-       <button data-anim-type="ksKangaroo"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Kangaroo</button>
-       <button data-anim-type="ksVelociraptor"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Velociraptor</button>
+    <div class="tip" id="settings">
+        <h2>Swap type:</h2>
+       
+        <div class="buttons clear">
+            <button data-anim-type="ksFade" class="active tooltip" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
+            <button data-anim-type="ksBottomToTop" class="tooltip" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
+            <button data-anim-type="ksLeftToRight" class="tooltip" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
+            <button data-anim-type="ksTopToBottom" class="tooltip" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
+            <button data-anim-type="ksRightToLeft" class="tooltip" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
+        </div>
+        
+        <h2>Speed:</h2>
+       
+        <div class="buttons clear">
+            <button data-anim-type="ksSlow" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
+            <button data-anim-type="ksFast" class="active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
+            <button data-anim-type="ksUltraFast" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
+        </div>
     </div>
-    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span>Download on GitHub</a>
+    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
         
     <div id="main" class="main">
         <header>
@@ -35,7 +48,7 @@
     
                 <ul>
                     <li><a id="ksIndex" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
-                    <li><a id="ksHow" href="/demo/the-how.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
+                    <li><a id="ksHow" href="/demo/setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
                     <li><a id="ksOptions" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
                     <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
                 </ul>
@@ -45,7 +58,7 @@
         <section class="demobox">
             <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Lots of images</h1>
             
-            <p>Images are preloaded before the page swap by default. Set the option "checkForImages" to false if you don't need this.</p> 
+            <p>Images are preloaded before the page swap by default. Set the option "preloadImages" to false if you don't need this.</p> 
             
             <a href="/demo/images/4891344276_c2a8cb9856_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4891344276_c2a8cb9856_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
             <a href="/demo/images/4657857004_7ebf9da1b0_b.jpg" rel="lightbox[nature]" title=""><img src="/demo/images/4657857004_7ebf9da1b0_m.jpg" alt="Plants: image 1 0f 9 thumb" /></a>
