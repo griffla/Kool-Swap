@@ -552,11 +552,12 @@ ul.tabs li a.active {
 }
 
 
+/* Tooltips */
+/*
 .tooltip {
 	position: relative;
 }
 
-/* Tooltips */
 .tooltip:hover:before{
 	background-color: #333;
 	background-color: rgba(0, 0, 0, .75);
@@ -585,10 +586,4 @@ ul.tabs li a.active {
 	position: absolute;
 	bottom: -10px;
 }
-
-
-
-
-
-
-
+*/
