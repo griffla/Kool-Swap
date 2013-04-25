@@ -14,7 +14,7 @@
 		"popstate",
 		"pushstate"
     ],
-    "version": "0.2.0",
+    "version": "0.2.2",
     "author": {
         "name": "Joscha Schmidt",
         "email" : "smith.griffla@gmail.com",
