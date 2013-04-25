@@ -2,7 +2,8 @@ Kool Swap
 ===============
 Kool Swap enables impressively ajax page load support with history for websites. Just tell the plugin what should be switched and what are the triggers and swap pages in a nice way!
 
-by Joscha Schmidt - http://kool-swap.itsjoe.de/demo
+by Joscha Schmidt
+Demo & Documentation: http://kool-swap.itsjoe.de/demo
 
 License
 =======
