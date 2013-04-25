@@ -19,13 +19,26 @@
 </head>
 
 <body>
-    <div class="tip" id="animType">
-       <p><span aria-hidden="true" data-icon="&#xe002;"></span>Swap type:</p>
-       <button data-anim-type="ksFog" class="active"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Fog</button>
-       <button data-anim-type="ksKangaroo"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Kangaroo</button>
-       <button data-anim-type="ksVelociraptor"><span aria-hidden="true" data-icon="&#xe000;" data-icon-active="&#xe001;"></span>Velociraptor</button>
+    <div class="tip" id="settings">
+        <h2>Swap type:</h2>
+       
+        <div class="buttons clear">
+            <button data-anim-type="ksFade" class="active tooltip" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
+            <button data-anim-type="ksBottomToTop" class="tooltip" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
+            <button data-anim-type="ksLeftToRight" class="tooltip" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
+            <button data-anim-type="ksTopToBottom" class="tooltip" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
+            <button data-anim-type="ksRightToLeft" class="tooltip" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
+        </div>
+        
+        <h2>Speed:</h2>
+       
+        <div class="buttons clear">
+            <button data-anim-type="ksSlow" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
+            <button data-anim-type="ksFast" class="active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
+            <button data-anim-type="ksUltraFast" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
+        </div>
     </div>
-    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span>Download on GitHub</a>
+    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
         
     <div id="main" class="main">
         <header>
@@ -36,7 +49,7 @@
     
                 <ul>
                     <li><a href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
-                    <li><a href="/demo/the-how.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
+                    <li><a href="/demo/setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
                     <li><a class="active" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
                     <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
                 </ul>
@@ -60,18 +73,13 @@
                 <tbody>
                     <tr>
                         <td>swapBox</td>
-                        <td>body > :first-child</td>
-                        <td>Define the element that should be swaped. It can be any CSS selector but ideally an ID.<br><em class="warning"><span aria-hidden="true" data-icon="&#xe003;"></span>It is strongly recommended to define a specific swapBox selector! Some browser plugins create hidden elements that will be used from Kool Swap if they exist.</em></td>
-                    </tr>
-                    <tr>
-                        <td>swapBoxOffsetTop</td>
-                        <td></td>
-                        <td>Define a top offset for the swapBox.</td>
+                        <td><strike>body > :first-child</strike></td>
+                        <td>Define the element that should be swaped. It can be any CSS selector but ideally an ID.</td>
                     </tr>
                     <tr>
                         <td>swapTriggerBox</td>
                         <td>.kool-swap</td>
-                        <td>Define the element that contains the triggers that will be used for a kool swap.</td>
+                        <td>Element that contains the triggers that will be used for a kool swap.</td>
                     </tr>
                     <tr>
                         <td>swapTrigger</td>
@@ -103,10 +111,10 @@
                         <td>500</td>
                         <td>Duration for the unloading page.</td>
                     </tr>
-                    <tr id="swapBoxSiblings">
-                        <td>swapBoxSiblings</td>
+                    <tr id="bouncingBoxes">
+                        <td>bouncingBoxes<br><strike>swapBoxSiblings</strike></td>
                         <td></td>
-                        <td>Are there jumpy siblings? Define them here and they will fade out/in on page swap.</td>
+                        <td>Are there bouncing boxes? Define them here and they will fade out/in on page swap. <a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
                     </tr>
                     <tr>
                         <td>topToBottom</td>
@@ -120,25 +128,40 @@
                     </tr>
                     <tr>
                         <td>inEasing</td>
-                        <td></td>
-                        <td>Easing for the page swapped in. This only takes effect is topToBottom or leftToRight is defined.</td>
+                        <td>easeInSine</td>
+                        <td>Easing for the page swapped in. This only takes effect if a direction is defined.</td>
                     </tr>
                     <tr>
                         <td>outEasing</td>
-                        <td></td>
-                        <td>Easing for the page swapped out. This only takes effect is topToBottom or leftToRight is defined.</td>
+                        <td>easeInBack</td>
+                        <td>Easing for the page swapped out. This only takes effect if a direction is defined.</td>
                     </tr>
                     <tr>
-                        <td>checkForImages</td>
+                        <td>preloadImages</td>
                         <td>true</td>
                         <td>All images in the page that is currently loaded are reloaded before the page swap will be executed.</td>
+                    </tr>
+                    <tr id="positionType">
+                        <td>positionType</td>
+                        <td>fixed</td>
+                        <td>The swapBox will be fixed positioned by default. Position it absolute if this causes layout problems.</td>
+                    </tr>
+                    <tr id="moveSwapBoxClasses">
+                        <td>moveSwapBoxClasses</td>
+                        <td></td>
+                        <td>Classes of the swapBox itself won't be moved to the swapBoxIn by default. Set this to true if you need to use the same class for miscellaneous contents.</td>
+                    </tr>
+                    <tr class="obsolet">
+                        <td><strike>swapBoxOffsetTop</strike></td>
+                        <td><strike>0</strike></td>
+                        <td><strike>Top offset for the swapBox.</strike></td>
                     </tr>
                 </tbody>
                 
             </table>
         </section>
             
-        <section>
+        <section id="events">
             <h1>Events</h1>
             <p>
                 <code>$(document).ready()</code> function wont be triggered after a Kool Swap page load. Other plugins or ready-functions should be reinitialised after the load or animation of a page executed by Kool Swap. Use
@@ -168,10 +191,12 @@
             <pre>
                 <code>
                     $(document).on('ksLoadCallback', function() {<br>
-                     &nbsp;&nbsp;&nbsp;readyFunctions();<br>
+                     &nbsp;&nbsp;&nbsp;<em>functions</em><br>
                     });
                 </code>
             </pre>
+            
+            <p>Ready functions that are called after "ksLoadCallback" should often not be executed in the swapBox then in the swapInBox. To do that associate callback functions to ".ks-swap-box-in".</p>
             
             <p></p>
         </section>
@@ -188,9 +213,9 @@
                 </thead>
                 
                 <tbody>
-                    <tr>
-                        <td>update</td>
-                        <td>Update Kool Swap settings.</td>
+                    <tr class="obsolet">
+                        <td><strike>update</strike></td>
+                        <td>Update Kool Swap settings with the activation syntax and the redefined options.</td>
                     </tr>
                     <tr>
                         <td>destroy</td>
@@ -201,12 +226,19 @@
             
             <pre>
                 <code>
-                    $.koolSwap('update', {<br>
-                     &nbsp;&nbsp;&nbsp;direction : 'top-to-bottom',<br>
+                    $.koolSwap('destroy');
+                </code>
+            </pre>
+            
+            <h2>Update Settings</h2>
+            <pre>
+                <code>
+                    $.koolSwap({<br>
+                     &nbsp;&nbsp;&nbsp;setting: 'new/changed setting';<br>
                     });
                 </code>
             </pre>
-        </section>      
+        </section>
         
         
 	    <footer>
