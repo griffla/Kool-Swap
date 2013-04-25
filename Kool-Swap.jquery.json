@@ -9,10 +9,10 @@
         "page",
         "animation",
 		"performance",
-		"speed"
+		"speed",
         "ui",
 		"popstate",
-		"pushstate",
+		"pushstate"
     ],
     "version": "0.2.0",
     "author": {
