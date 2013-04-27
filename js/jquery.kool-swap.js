@@ -30,7 +30,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				direction: '',
 				positionType: 'fixed',
 		},
-		listenToPopState: function(settings, $swapTrigger, swapBoxId, swapBoxTagName) {
+		listenToPopState: function(settings, $swapTrigger) {
 			$(window)
 			.off('popstate')
 			.on('popstate', function(e) { // Listen to popstate
@@ -56,7 +56,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			        	return false;
 			        	break;
 				}
-				ksPageSwap.swapHistoryPage(settings, $swapTrigger, swapBoxId, $swapBoxIn, swapBoxTagName);
+				ksPageSwap.swapHistoryPage(settings, $swapTrigger, $swapBoxIn);
 				e.stopPropagation();
 			});
 		}
@@ -82,25 +82,23 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				ksPageSwap.defaults($(this), options);
 				
 				var $swapBox = $(psSettings.swapBox), // Use the swapBox option if it is called without selector
-					swapBoxId = $swapBox.attr('id'),
-					swapBoxTagName = $swapBox.prop("tagName"),
 					swapTriggerBox = psSettings.swapTriggerBox,
 					swapTrigger = psSettings.swapTrigger,
 					pageSwap = true;
 
 				if (hasPushstate && $('html').not('[data-ks-initialised]') ) {
 					$('html').attr('data-ks-initialised', 'true');
-					ksGlobal.listenToPopState(psSettings, $(swapTriggerBox + ' ' + swapTrigger), swapBoxId, swapBoxTagName);
+					ksGlobal.listenToPopState(psSettings, $(swapTriggerBox + ' ' + swapTrigger));
 				}
 				
-				ksMethods.trigger(psSettings, hasPushstate, swapBoxId, swapBoxTagName, swapTriggerBox, swapTrigger, pageSwap);
+				ksMethods.trigger(psSettings, hasPushstate, swapTriggerBox, swapTrigger, pageSwap);
 			});
 		}, 
-		swapHistoryPage: function(psSettings, $swapTrigger, swapBoxId, swapBoxIn, swapBoxTagName) {
+		swapHistoryPage: function(psSettings, $swapTrigger, swapBoxIn) {
 			if($('html').is('[data-ks-history-pushed]')) { 
 				var href = location.pathname;
 				//var currentpage = locationPath.replace(/^.*[\\\/]/, '');
-				ksMethods.ksLoadPage(psSettings, $swapTrigger, href, swapBoxId, swapBoxIn, swapBoxTagName);
+				ksMethods.ksLoadPage(psSettings, $swapTrigger, href, swapBoxIn);
 			}
 		},
 		destroy : function($this) {
@@ -128,14 +126,13 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			return this.each(function() {
 				ksSelectorSwap.defaults($(this), options);
 				
-				var $swapBox = $(this), // Otherwise use the given selector
-					swapBoxId = $swapBox.attr('id'),
-					swapBoxTagName = $swapBox.prop("tagName"),
-					swapTriggerBox = settings.swapTriggerBox,
+				settings.swapBox = $(this); // use the given selector
+				
+				var swapTriggerBox = settings.swapTriggerBox,
 					swapTrigger = settings.swapTrigger,
 					pageSwap = false;
 				
-				ksMethods.trigger(settings, true, swapBoxId, swapBoxTagName, swapTriggerBox, swapTrigger, pageSwap);
+				ksMethods.trigger(settings, true, swapTriggerBox, swapTrigger, pageSwap);
 			});
 		},		
 		destroy : function($this) {
@@ -149,7 +146,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 	};
 	
 	var ksMethods = {
-		trigger: function(settings, hasPushstate, swapBoxId, swapBoxTagName, swapTriggerBox, swapTrigger, pageSwap) {
+		trigger: function(settings, hasPushstate, swapTriggerBox, swapTrigger, pageSwap) {
 			if (hasPushstate) {
 				function is_touch_device() { // check if the plugin's running on a touch device
 					var el = document.createElement('div');
@@ -169,7 +166,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						e.preventDefault();
 						var $swapTrigger = $(this);
 						
-						ksMethods.ksDefineSwapBoxIn(settings, $swapTrigger, hasPushstate, swapBoxId, swapBoxTagName, pageSwap);
+						ksMethods.ksDefineSwapBoxIn(settings, $swapTrigger, hasPushstate, pageSwap);
 					});
 				} else {
 					$(document)
@@ -182,12 +179,12 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						e.preventDefault();
 						var $swapTrigger = $(this);
 
-						ksMethods.ksDefineSwapBoxIn(settings, $swapTrigger, hasPushstate, swapBoxId, swapBoxTagName, pageSwap);
+						ksMethods.ksDefineSwapBoxIn(settings, $swapTrigger, hasPushstate, pageSwap);
 					});
 				}
 			}
 		},
-		ksDefineSwapBoxIn: function(settings, $swapTrigger, hasPushstate, swapBoxId, swapBoxTagName, pageSwap) {
+		ksDefineSwapBoxIn: function(settings, $swapTrigger, hasPushstate, pageSwap) {
 			switch (settings.direction) {
 			    case 'left-to-right':
 			    case 'right-to-left':
@@ -197,7 +194,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 					$swapBoxIn = 'ks-swap-box-in';
 					if (!$('.ks-swap-box-in').length) {
 						var item = $(this);
-						ksMethods.ksCollectLoadPageInfo(settings, $swapTrigger, hasPushstate, swapBoxId, $swapBoxIn, swapBoxTagName, pageSwap);
+						ksMethods.ksCollectLoadPageInfo(settings, $swapTrigger, hasPushstate, $swapBoxIn, pageSwap);
 					} else {
 						return false;
 					}
@@ -208,7 +205,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 		        	break;
 			}
 		},
-		ksCollectLoadPageInfo: function(settings, $swapTrigger, hasPushstate, swapBoxId, $swapBoxIn, swapBoxTagName, pageSwap) {
+		ksCollectLoadPageInfo: function(settings, $swapTrigger, hasPushstate, $swapBoxIn, pageSwap) {
 			var url = $swapTrigger.attr('href');
 
 			var $swapBoxIn;
@@ -242,17 +239,17 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			//		}
 			//	});
 			
-			ksMethods.ksLoadPage(settings, $swapTrigger, url, swapBoxId, $swapBoxIn, swapBoxTagName, pageSwap);
+			ksMethods.ksLoadPage(settings, $swapTrigger, url, $swapBoxIn, pageSwap);
 			
 			if (pageSwap) {
 				history.pushState({'url':url}, null, url); // Update the url
 				$('html').attr('data-ks-history-pushed', 'true');
 			}
 		},
-		ksLoadPage: function(settings, $swapTrigger, href, swapBoxId, swapBoxIn, swapBoxTagName, pageSwap) {
-			var $swapBox = $('#' + swapBoxId); // redefine $swapBox variable
+		ksLoadPage: function(settings, $swapTrigger, href, swapBoxIn, pageSwap) {
+			var $swapBox = $(settings.swapBox); // redefine $swapBox variable
 			if (href != '') {
-				ksMethods.ksAddSwapBoxIn(settings, swapBoxTagName, swapBoxId, swapBoxIn);
+				ksMethods.ksAddSwapBoxIn(settings, swapBoxIn);
 				$.ajax({
 					type: 'GET',
 					url: href,
@@ -268,10 +265,10 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						$swapTrigger.addClass('active');
 
 						if (settings.bouncingBoxes) {
-							ksMethods.ksFadeSiblings(settings, $swapTrigger, data, swapBoxId, swapBoxIn, pageSwap);
+							ksMethods.ksFadeSiblings(settings, $swapTrigger, data, swapBoxIn, pageSwap);
 
 						} else {
-							ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxId, swapBoxIn, pageSwap);
+							ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxIn, pageSwap);
 						}
 					},
 					dataType: 'html',
@@ -280,10 +277,11 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				alert('There is no target defined! Please check the references (i.e. normally href) of the swapTriggers.');
 			}
 		},
-		ksAddSwapBoxIn: function(settings, swapBoxTagName, swapBoxId, swapBoxIn) {
-			var $swapBox = $('#' + swapBoxId), // redefine $swapBox variable
-				swapBoxClass = $swapBox.attr('class');
-
+		ksAddSwapBoxIn: function(settings, swapBoxIn) {
+			var $swapBox = $(settings.swapBox), // redefine $swapBox variable
+				swapBoxClass = $swapBox.attr('class'),
+				swapBoxTagName = $swapBox.prop("tagName");
+				
 			$(document).find('.ks-swap-box-in').remove();
 
 			if (settings.moveSwapBoxClasses) {
@@ -296,17 +294,16 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			.hide();
 
 		},
-		ksFadeSiblings: function(settings, $swapTrigger, data, swapBoxId, swapBoxIn, pageSwap) {
-			var $swapBox = $('#' + swapBoxId); // redefine $swapBox variable
-			
+		ksFadeSiblings: function(settings, $swapTrigger, data, swapBoxIn, pageSwap) {
 			$(document)
 			.find(settings.bouncingBoxes)
 			.animate({opacity: 0}, 50, function() {
-				ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxId, swapBoxIn);
+				ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxIn);
 			});
 		},
-		ksPositionAndPrepare: function(settings, $swapTrigger, data, swapBoxId, swapBoxIn, pageSwap) {
-			var $swapBox = $('#' + swapBoxId), // redefine $swapBox variable
+		ksPositionAndPrepare: function(settings, $swapTrigger, data, swapBoxIn, pageSwap) {
+			var $swapBox = $(settings.swapBox), // redefine $swapBox variable
+				swapBoxId = $swapBox.attr('id'),
 				mainOffset = $swapBox.position(),
 				mainWidth = $swapBox.width(),
 				mainMarginLeft = $swapBox.css('margin-left'),
@@ -372,17 +369,18 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 					count++;
 			        if (count == swapBoxInImages.length){
 						$(document).trigger('ksLoadCallback'); // Trigger the ksLoad callback event
-			        	ksMethods.ksSwapContent(settings, swapBoxIn, swapBoxId, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap);
+			        	ksMethods.ksSwapContent(settings, swapBoxIn, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap);
 			        }
 				});
 			} else {
 				$(document).trigger('ksLoadCallback'); // Trigger the ksLoad callback event
-				ksMethods.ksSwapContent(settings, swapBoxIn, swapBoxId, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap);
+				ksMethods.ksSwapContent(settings, swapBoxIn, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap);
 			}
 		},
 		// Swap the content
-		ksSwapContent: function(settings, swapBoxIn, swapBoxId, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap) {
-			var $swapBox = $('#' + swapBoxId), // redefine $swapBox variable
+		ksSwapContent: function(settings, swapBoxIn, $swapTrigger, mainOffset, swapBoxLeftAbsolute, mainWidth, htmlId, bodyId, htmlClass, bodyClass, pageTitle, pageSwap) {
+			var $swapBox = $(settings.swapBox), // redefine $swapBox variable
+				swapBoxId = $swapBox.attr('id'),
 				$swapBoxIn = $('#' + swapBoxIn),
 				swapBoxInHeight = $swapBoxIn.outerHeight(),
 				swapBoxInWidth = $swapBoxIn.outerWidth(),
