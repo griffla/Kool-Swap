@@ -125,6 +125,10 @@ table th {
 	color: #999;
 }
 
+.obsolet td {
+	padding: 2px 6px;
+}
+
 p {
 	font-size: 1.13rem;
 	margin: 0 auto 10px;

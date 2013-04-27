@@ -29,14 +29,14 @@ $(function() {
 			$.koolSwap({
 				direction: 'top-to-bottom',
 				outEasing : 'easeInSine',
-				inEasing : 'easeInSine',
+				inEasing : 'easeInOutElastic',
 			});
 		},
 		ksBottomToTop: function() {
 			$.koolSwap({
 				direction: 'bottom-to-top',
 				outEasing : 'easeInSine',
-				inEasing : 'easeInSine',
+				inEasing : 'easeInOutElastic',
 			});
 		},
 		ksLeftToRight: function() {

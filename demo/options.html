@@ -73,7 +73,7 @@
                 <tbody>
                     <tr>
                         <td>swapBox</td>
-                        <td><strike>body > :first-child</strike></td>
+                        <td><strike class="obsolet">body > :first-child</strike></td>
                         <td>Define the element that should be swaped. It can be any CSS selector but ideally an ID.</td>
                     </tr>
                     <tr>
@@ -111,21 +111,6 @@
                         <td>500</td>
                         <td>Duration for the unloading page.</td>
                     </tr>
-                    <tr id="bouncingBoxes">
-                        <td>bouncingBoxes<br><strike>swapBoxSiblings</strike></td>
-                        <td></td>
-                        <td>Are there bouncing boxes? Define them here and they will fade out/in on page swap. <a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
-                    </tr>
-                    <tr>
-                        <td>topToBottom</td>
-                        <td>false</td>
-                        <td>Set to true to swap pages from top to bottom.</td>
-                    </tr>
-                    <tr>
-                        <td>leftToRight</td>
-                        <td>false</td>
-                        <td>Set to true to swap pages from left to right.</td>
-                    </tr>
                     <tr>
                         <td>inEasing</td>
                         <td>easeInSine</td>
@@ -135,6 +120,11 @@
                         <td>outEasing</td>
                         <td>easeInBack</td>
                         <td>Easing for the page swapped out. This only takes effect if a direction is defined.</td>
+                    </tr>
+                    <tr id="bouncingBoxes">
+                        <td>bouncingBoxes<br><strike class="obsolet">swapBoxSiblings</strike></td>
+                        <td></td>
+                        <td>Are there bouncing boxes? Define them here and they will fade out/in on page swap. <a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
                     </tr>
                     <tr>
                         <td>preloadImages</td>
@@ -155,6 +145,16 @@
                         <td><strike>swapBoxOffsetTop</strike></td>
                         <td><strike>0</strike></td>
                         <td><strike>Top offset for the swapBox.</strike></td>
+                    </tr>
+                    <tr class="obsolet">
+                        <td><strike>topToBottom</strike></td>
+                        <td><strike>false</strike></td>
+                        <td><strike>Set to true to swap pages from top to bottom.</strike></td>
+                    </tr>
+                    <tr class="obsolet">
+                        <td><strike>leftToRight</strike></td>
+                        <td><strike>false</strike></td>
+                        <td><strike>Set to true to swap pages from left to right.</strike></td>
                     </tr>
                 </tbody>
                 
@@ -253,7 +253,6 @@
 	    </footer>
     </div>
     
-    <script src="/demo/js/jquery.animate-enhanced.min.js"></script>
     <script src="/js/jquery.kool-swap.js"></script>
     <script src="/demo/js/demo.js"></script>
     <script src="/demo/js/googleanalytics.js"></script>
