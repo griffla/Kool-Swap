@@ -322,6 +322,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			}
 			
 			$swapBox
+			.addClass('ks-swap-box-out')
 			.css({
 				position: 'absolute',
 				top: mainOffset.top,
@@ -468,8 +469,6 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				.animate(
 					swapBoxOutAnimProperties, finalOutDuration, settings.outEasing, function() {
 						$(this).remove();
-						$(document).trigger('ksSwapCallback'); // Trigger the swap callback event
-						
 						if (pageSwap) {
 							$(document).scrollTop(0); // Scroll the page to top to avoid flickering
 							ksMethods.ksSwitchClasses(htmlId, bodyId, htmlClass, bodyClass, pageTitle);
