@@ -3,7 +3,7 @@
     
 <head>
     <meta charset="utf-8">
-    <title>How to & examples - Kool Swap!</title>
+    <title>Lots of images - Ajax page swap with history support and optional effects with Kool Swap!</title>
     <meta name="author" content="Joscha Schmidt">
     <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
@@ -13,7 +13,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 </head>
 
@@ -38,7 +38,7 @@
         </div>
     </div>
     <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
-    
+        
     <div id="main" class="main">
         <header>
             <nav class="kool-swap">
@@ -50,63 +50,62 @@
                     <li><a id="ksIndex" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
                     <li><a id="ksHow" href="/demo/setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
                     <li><a id="ksOptions" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
-                    <li><a class="active" id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
+                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
                 </ul>
             </nav>
         </header>
 	    
         <section class="demobox">
-            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Good to know</h1>
+            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Multiple Instances</h1>
             
-            <h2>How it works</h2>
+            <p>Kool Swap can be used sitewide and/or with a selector.</p> 
             
-            <p class="bolder">
-                After a Kool Swap trigger click the plugin creates a temporary container (swapBoxIn) and loads the target page contents inside. It gets the 
-                coordinates of the defined swapBox to position it absolute before animating. After this the swapBox animates out and the swapBoxIn animates in.
-                Title, HTML/BODY classes and ids of the called page will be transfered. At best there will be no HTML/CSS optimisation required. 
-            </p>
+            <ul class="tabs">
+                <li><a href="/demo/index.html" data-ks-load-selector="#advantages">Kool Swap Advantages</a></li>
+                <li><a href="/demo/options.html" data-ks-load-selector="#events">Events</a></li>
+            </ul>
+            
+            <section id="tabContent" class="tabContent">
+                Click a tab to switch content!
+            </section>
+            
+            <div class="description">
+	            <h2>Usage</h2>
+	
+				<p>Unlike the sitewide initialisation the selector has to be added in to the initialisation code:</p>
+				
+	            <div>
+	                <pre>
+	                    <code>
+	                   		$('#tabContent').koolSwap({<br>
+							&nbsp;&nbsp;&nbsp;swapTriggerBox : '.tabs',<br>
+							&nbsp;&nbsp;&nbsp;bouncingBoxes : '.description, footer',<br>
+							&nbsp;&nbsp;&nbsp;direction: 'left-to-right',<br>
+							&nbsp;&nbsp;&nbsp;<a href="/demo/options.html#moveSwapBoxClasses">moveSwapBoxClasses</a> : true,<br>
+							});
+	                    </code>
+	                </pre>
+	            </div>
+	
+				<p>Define the contents with the href to the target page and a selector with the <code>data-ks-load-selector</code> attribute to load the contents from:</p>
+				
+	            <div>
+	                <pre>
+	                    <code>
+	                   		&lt;a href="/demo/options.html" data-ks-load-selector="#events"&gt;Show events&lt;/a&gt;
+	                    </code>
+	                </pre>
+	            </div>
+	            
+                <p class="info kool-swap">
+                	<span aria-hidden="true" data-icon="&#xe004;"></span>
+	                Remember to reinitiate with the <a href="/demo/options.html#events">ksSwapCallback</a> event.
+	            </p> 
+            
+	            
+	       </div>
             
             
-            <h2 id="itsBeta">Remeber it's beta!</h2>
-
-            <p>
-                Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. 
-                I tested it on several Websites and it worked fine but there may (better: will!) be cases were it won't work.<br>
-                So please <a href="https://github.com/griffla/Kool-Swap/issues">report issues</a>.
-            </p> 
-            
-            <h1><span aria-hidden="true" data-icon="&#xe00e;"></span>Tips & Examples</h1>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Topic</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr>
-                        <td>Bouncing Boxes</td>
-                        <td>Bouncing Boxes can be faded out/in on page swap. Consider the demo boxes at the bottom of the page and how they jump if they are not faded.</td>
-                        <td><a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Multiple Instances</td>
-                        <td>Use Kool Swap for sitewide functionality including history and title/class/id transfer and/or for content boxes on a page.</td>
-                        <td class="kool-swap"><a href="/demo/examples/multiple-instances.html">See an example</a></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Images</td>
-                        <td>Images are preloaded before the page swap by default. Set the option "checkForImages" to false if you don't need this.</td>
-                        <td class="kool-swap"><a href="/demo/examples/lots-of-images.html">See an example</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
         </section>
         
 	    <footer>
