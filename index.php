@@ -3,7 +3,7 @@
     
 <head>
     <meta charset="utf-8">
-    <title>jQuery Aperture</title>
+    <title>Kool Swap</title>
     <meta name="author" content="Joscha Schmidt">
     <meta name="description" content="Rotate all kinds of elements clock- or counterclockwise with jQuery Aperture">
 
