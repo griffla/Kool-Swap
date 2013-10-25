@@ -1,5 +1,5 @@
 /*
-Kool Swap v0.2.2
+Kool Swap v0.5
 by Joscha Schmidt - http://www.itsjoe.de
 
 For more information, visit:
@@ -17,21 +17,20 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				loadBox : '',
 				swapTriggerBox : '.kool-swap',
 				swapTrigger : 'a',
-				loadErrorMessage : 'The requested page could not be loaded.',
-				loadErrorBacklinkText : 'Go back to the last page',
-				bouncingBoxes : '',
-				bouncingBoxHandling: 'fade',
-				topToBottom : false, 
-				leftToRight : false,
-				inEasing : 'easeInSine',
-				outEasing : 'easeInSine',
+				direction: '',
 				inDuration : 700,
 				outDuration : 500,
+				inEasing : 'easeInSine',
+				outEasing : 'easeInSine',
+				bouncingBoxes : '',
+				bouncingBoxHandling: 'fade',
 				preloadImages : true,
-				direction: '',
 				positionType: 'fixed',
+				moveSwapBoxClasses: '',
 				history: false,
 				outerWidth: true,
+				loadErrorMessage : 'The requested page was not found.',
+				loadErrorBacklinkText : 'Go back to the last page',
 		},
 		listenToPopState: function(settings, $swapTrigger) {
 			$(window)
@@ -249,14 +248,6 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 		        	return false;
 		        	break;
 			}
-			
-			// This generates a canvas from the current page to freeze the contents as they are. It may be used later.
-			// Include http://html2canvas.hertzen.com/build/html2canvas.js to test it.
-			//	html2canvas($('#' + swapBoxId), {
-			//		onrendered: function(canvas) {
-			//			$('#' + swapBoxId).find('*').remove().end().append(canvas);
-			//		}
-			//	});
 			
 			ksMethods.ksLoadPage(settings, $swapTrigger, url, $swapBoxIn, pageSwap);
 			
