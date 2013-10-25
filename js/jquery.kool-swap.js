@@ -28,7 +28,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				positionType: 'fixed',
 				moveSwapBoxClasses: '',
 				history: false,
-				outerWidth: true,
+				outerWidth: false,
 				loadErrorMessage : 'The requested page was not found.',
 				loadErrorBacklinkText : 'Go back to the last page',
 		},
@@ -324,7 +324,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			var $swapBox = $(settings.swapBox), // redefine $swapBox variable
 				swapBoxId = $swapBox.attr('id'),
 				mainOffset = $swapBox.position(),
-				mainWidth = $swapBox.outerWidth(),
+				mainWidth = $swapBox.width(),
 				mainMarginLeft = $swapBox.css('margin-left'),
 				mainMarginRight = $swapBox.css('margin-left'),
 				swapBoxLeftAbsolute = mainOffset.left + parseFloat(mainMarginLeft);
@@ -332,8 +332,8 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				$swapBoxIn = $('#' + swapBoxIn),
 				loadSelector = $swapTrigger.attr('data-ks-load-selector');
 
-			if (!settings.outerWidth) {
-				var mainWidth = $swapBox.width();
+			if (settings.outerWidth) {
+				var mainWidth = $swapBox.outerWidth();
 			}
 				
 			if (pageSwap) {
