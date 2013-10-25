@@ -1,8 +1,11 @@
 $(function() {
 	$.koolSwap({
 		swapBox : '#main',
+		direction: 'top-to-bottom',
 		outDuration : 550,
 		inDuration : 600,
+		bouncingBoxes : 'footer',
+		outerWidth: true,
 	});
 
 	readyFunctions(); // Load the readyFunctions on page $(document).ready()
@@ -29,14 +32,14 @@ $(function() {
 			$.koolSwap({
 				direction: 'top-to-bottom',
 				outEasing : 'easeInSine',
-				inEasing : 'easeInOutElastic',
+				inEasing : 'easeInSine',
 			});
 		},
 		ksBottomToTop: function() {
 			$.koolSwap({
 				direction: 'bottom-to-top',
 				outEasing : 'easeInSine',
-				inEasing : 'easeInOutElastic',
+				inEasing : 'easeInSine',
 			});
 		},
 		ksLeftToRight: function() {
@@ -119,9 +122,13 @@ function readyFunctions() {
 	$('#tabContent').koolSwap({
 		swapTriggerBox : '.tabs',
 		bouncingBoxes : '.description, footer',
+		bouncingBoxHandling: 'slide',
 		direction: 'left-to-right',
 		moveSwapBoxClasses : true,
 		positionType: 'absolute',
+		outEasing : 'easeInOutCirc',
+		inEasing : 'easeOutBack',
+		outerWidth: true,
 	});
 }
 

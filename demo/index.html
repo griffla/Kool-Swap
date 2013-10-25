@@ -8,6 +8,7 @@
     <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/kool-swap.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -19,118 +20,142 @@
 </head>
 
 <body>
-    <div class="tip" id="settings">
-        <h2>Swap type:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksFade" class="active tooltip" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
-            <button data-anim-type="ksBottomToTop" class="tooltip" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
-            <button data-anim-type="ksLeftToRight" class="tooltip" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
-            <button data-anim-type="ksTopToBottom" class="tooltip" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
-            <button data-anim-type="ksRightToLeft" class="tooltip" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
-        </div>
-        
-        <h2>Speed:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksSlow" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
-            <button data-anim-type="ksFast" class="active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
-            <button data-anim-type="ksUltraFast" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
-        </div>
-    </div>
-    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
-    
-    <div id="main" class="main">
-        <header>
-		    <nav class="kool-swap">
-	            <div class="tip" id="tipLeft">
-	                Navigate to see the plugin in action.
-	            </div>
-	
-		        <ul>
-                    <li><a class="active" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
-                    <li><a href="/demo/setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
-                    <li><a href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
-                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
-		        </ul>
-		    </nav>
-        </header>
-        
-        <h1><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap<sup>&beta;</sup></h1>
-        
-        <p>Swap pages in a cool and functional way.</p>
-        
-        <p class="kool-swap">
-            Kool Swap enables impressively ajax page load support for websites. Just <a href="setup.html">tell the plugin</a> what should be switched and swap pages in a nice way!<br>
-        </p>
-        
-        <section class="infoBox clear kool-swap" id="advantages" style="margin-bottom:20px">
-            <div><h2>Let's talk about the advantages&hellip;</h2></div>
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Performance</h2><br>
-                Scripts, stylesheets and other sitewide similar elements are loaded only once. Just a small amount of data is requested via ajax. 
-            </div> 
-            
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Go back and forward</h2><br>
-                The url changes on page switch because of the intregated html5 history API. Browsers forward and back buttons work!
-            </div> 
-            
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Title, classes and IDs are transfered</h2><br>
-                The plugin extracts the <code>&lt;title&gt;</code> as well as <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> classes and ids and replaces them with the swapBoxIn page values. 
-            </div>
-            
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Callback events</h2><br>
-                document.ready() functions can be executed with plugin triggered <a href="/demo/options.html#events">callback events</a> after load or animation of the loaded contents.
-            </div>
-            
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><h2>Calling types and multiple instances</h2><br>
-                Use Kool Swap for sitewide functionality including history and title, class, id transfer and/or for <a href="/demo/examples/multiple-instances.html">content boxes on a page</a>.
-            </div>
-            
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe005;"></span><span>URL hashes are captured and browser functionality is emulated with scrollTo<span><br>
-                <span aria-hidden="true" data-icon="&#xe005;"></span><span>Images are preloaded by default. <a href="/demo/examples/lots-of-images.html">Demo</a><span><br>
-                <span aria-hidden="true" data-icon="&#xe005;"></span><span>The sitewide initialisation will only happen if the browser supports html5 history API. Links are requested with standard browser functionality and without ajax as fallback.<span><br>
-            </div>
-        </section>
-        
-        
-        
-        
-        <section class="infoBox warning clear">
-            <div><h2>&hellip;and about potential problems</h2></div>
-            <div class="info">
-                <span aria-hidden="true" data-icon="&#xe003;"></span><h2>Well formed HTML</h2><br>
-                Kool Swap needs well formed HTML to work with. Display problems could happen on documents with markup errors.
-            </div> 
-            
-            <div class="info kool-swap">
-                <span aria-hidden="true" data-icon="&#xe003;"></span><h2>Remember it's beta!</h2><br>
-                Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. <a href="/demo/examples/index.html#itsBeta">Read more.</a>  
-            </div>
-            
-            <div class="info kool-swap">
-                <span aria-hidden="true" data-icon="&#xe003;"></span><h2>No sitewide support for IE &lt; 10</h2><br>
-                Internet Explorer 10 is the first IE version that supports pushstate. IE 9 and below will fallback to standard page call.
-            </div>
-            
-        </section>
-        
-	    <footer>
-            <h2>This is Kool Swap!</h2>
-	        
+			
+	<div class="container">
+
+		<header>
+	    	<div class="row">
+	    		<div class="col-md-7 col-sm-12">
+					<nav class="kool-swap clearfix">
+						<ul>
+							<li><a class="active logo" href="/demo/">Kool Swap</a></li>
+							<li><a href="/demo/setup.html">Setup</a></li>
+							<li><a href="/demo/options.html">Documentation</a></li>
+							<li><a id="ksExamples" href="/demo/examples">How to use</a></li>
+						</ul>
+					</nav>
+				</div>
+	    		<div class="col-md-5 col-sm-12 text-center" id="settings">
+					
+			        <div class="button-box type clearfix">
+			            <button data-anim-type="ksFade" class="swap-btn type" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
+			            <button data-anim-type="ksBottomToTop" class="swap-btn type" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
+			            <button data-anim-type="ksLeftToRight" class="swap-btn type" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
+			            <button data-anim-type="ksTopToBottom" class="active swap-btn type" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
+			            <button data-anim-type="ksRightToLeft" class="swap-btn type" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
+			        </div>
+			        
+			        <div class="button-box speed clearfix">
+			            <button data-anim-type="ksSlow" class="swap-btn speed" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
+			            <button data-anim-type="ksFast" class="swap-btn speed active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
+			            <button data-anim-type="ksUltraFast" class="swap-btn speed" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
+			        </div>
+					
+				</div>
+			</div>
+		</header>
+
+		<div class="main row">
+		    <div id="main" class="main-inner col-md-12">
+    			<a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span> Download on GitHub</a>
+		        
+		        <div class="row">
+		        	<div class="col-md-5 col-md-push-7 text-center">
+		        		<div class="arrow-top-box">
+		        			Switch between miscellaneous swap directions and speeds and navigate the website to see the plugin
+		        			in action. 
+		        		</div>
+		        	</div>
+		        	
+		        	<div class="col-md-7 col-md-pull-5">
+				        <h1>Swap pages in a cool and functional way</h1>
+		        	</div>
+		        </div>
+		        
+		        <div class="row">
+		        	<div class="col-md-8">
+				        <p class="lead kool-swap">
+				            Kool Swap enables impressively ajax page load support for websites. Just <a href="setup.html">tell the plugin</a> what should be switched and swap pages in a nice way!<br>
+				        </p>
+		        	</div>
+		        </div>
+		        
+		        <h2>Advantages</h2>
+		        <section class="infoBox clear kool-swap row" id="advantages" style="margin-bottom:20px">
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <h2>Performance</h2>
+			                Scripts, stylesheets and other sitewide similar elements are loaded only once. Just a small amount of data is requested via ajax. 
+		            	</div>
+		            </div> 
+		            
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <h2>History</h2>
+			                The url changes on page switch because of the intregated html5 history API. Browsers forward and back buttons work!
+		            	</div>
+		            </div> 
+		            
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <h2>Callback events</h2>
+			                document.ready() functions can be executed with plugin triggered <a href="/demo/options.html#events">callback events</a> after load or animation of the loaded contents.
+		            	</div>
+		            </div>
+				</section>
+				
+		        <section class="infoBox clear kool-swap row" style="margin-bottom:20px">
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <h2>Title, classes and IDs are transfered</h2>
+			                The plugin extracts the <code>&lt;title&gt;</code> as well as <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> classes and ids and replaces them with the swapBoxIn page values. 
+		            	</div>
+		            </div>
+		
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <h2>Types and multiple instances</h2>
+			                Use Kool Swap for sitewide functionality including history and title, class, id transfer and/or for <a href="/demo/examples/multiple-instances.html">content boxes on a page</a>.
+		            	</div>
+		            </div>
+		            
+		            <div class="col-md-4">
+		            	<div class="info">
+			                <span aria-hidden="true" data-icon="&#xe005;"></span><span>URL hashes are captured and browser functionality is emulated with scrollTo<span><br>
+			                <span aria-hidden="true" data-icon="&#xe005;"></span><span>Images are preloaded by default. <a href="/demo/examples/lots-of-images.html">Demo</a><span><br>
+			                <span aria-hidden="true" data-icon="&#xe005;"></span><span>The sitewide initialisation will only happen if the browser supports html5 history API. Links are requested with standard browser functionality and without ajax as fallback.<span><br>
+		            	</div>
+		            </div>
+		        </section>
+		        
+				<h2>Good to know</h2>
+		        <section class="infoBox clear kool-swap row">
+		            <div class="col-md-4">
+			            <div class="info kool-swap">
+			                <h2>Remember it's beta!</h2><br>
+			                Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. <a href="/demo/examples/index.html#itsBeta">Read more.</a>  
+			            </div>
+		            </div>
+			            
+		            <div class="col-md-4">
+			            <div class="info kool-swap">
+			                <h2>Sitewide support for IE &lt; 10</h2><br>
+			                Internet Explorer 10 is the first version of IE supporting pushstate. IE 9 and below will fallback to standard page call.
+			            </div>
+		            </div>
+		        </section>
+		        
+		    </div>
+	    </div>
+	    <footer class="clearfix">
 	        <nav>
-	            <h2>See also:</h2>
+	            <h2>Take a look at this:</h2>
 	            <ul>
 	                <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
 	            </ul>
 	        </nav>
 	    </footer>
-    </div>
+	</div>	
     
     <script src="/js/jquery.kool-swap.js"></script>
     <script src="/demo/js/demo.js"></script>

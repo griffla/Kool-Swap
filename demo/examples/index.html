@@ -8,6 +8,7 @@
     <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/kool-swap.css">
     <link rel="stylesheet" type="text/css" href="/demo/css/demo.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -18,102 +19,107 @@
 </head>
 
 <body>
-    <div class="tip" id="settings">
-        <h2>Swap type:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksFade" class="active tooltip" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
-            <button data-anim-type="ksBottomToTop" class="tooltip" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
-            <button data-anim-type="ksLeftToRight" class="tooltip" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
-            <button data-anim-type="ksTopToBottom" class="tooltip" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
-            <button data-anim-type="ksRightToLeft" class="tooltip" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
-        </div>
-        
-        <h2>Speed:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksSlow" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
-            <button data-anim-type="ksFast" class="active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
-            <button data-anim-type="ksUltraFast" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
-        </div>
-    </div>
-    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
-    
-    <div id="main" class="main">
+            
+    <!-- a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a -->
+    <div class="container">
+
         <header>
-            <nav class="kool-swap">
-                <div class="tip" id="tipLeft">
-                    Navigate to see the plugin in action.
+            <div class="row">
+                <div class="col-md-7 col-sm-12">
+                    <nav class="kool-swap clearfix">
+                        <ul>
+                            <li><a class="logo" href="/demo/">Kool Swap</a></li>
+                            <li><a href="/demo/setup.html">Setup</a></li>
+                            <li><a href="/demo/options.html">Documentation</a></li>
+                            <li><a class="active" id="ksExamples" href="/demo/examples">How to use</a></li>
+                        </ul>
+                    </nav>
                 </div>
-    
-                <ul>
-                    <li><a id="ksIndex" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
-                    <li><a id="ksHow" href="/demo/setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
-                    <li><a id="ksOptions" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
-                    <li><a class="active" id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
-                </ul>
-            </nav>
+                <div class="col-md-5 col-sm-12 text-center" id="settings">
+                    
+                    <div class="button-box type clearfix">
+                        <button data-anim-type="ksFade" class="swap-btn type" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
+                        <button data-anim-type="ksBottomToTop" class="swap-btn type" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
+                        <button data-anim-type="ksLeftToRight" class="swap-btn type" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
+                        <button data-anim-type="ksTopToBottom" class="active swap-btn type" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
+                        <button data-anim-type="ksRightToLeft" class="swap-btn type" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
+                    </div>
+                    
+                    <div class="button-box speed clearfix">
+                        <button data-anim-type="ksSlow" class="swap-btn speed" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
+                        <button data-anim-type="ksFast" class="swap-btn speed active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
+                        <button data-anim-type="ksUltraFast" class="swap-btn speed" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
+                    </div>
+                    
+                </div>
+            </div>
         </header>
-	    
-        <section class="demobox">
-            <h1><span aria-hidden="true" data-icon="&#xe004;"></span>Good to know</h1>
-            
-            <h2>How it works</h2>
-            
-            <p class="bolder">
-                After a Kool Swap trigger click the plugin creates a temporary container (swapBoxIn) and loads the target page contents inside. It gets the 
-                coordinates of the defined swapBox to position it absolute before animating. After this the swapBox animates out and the swapBoxIn animates in.
-                Title, HTML/BODY classes and ids of the called page will be transfered. At best there will be no HTML/CSS optimisation required. 
-            </p>
-            
-            
-            <h2 id="itsBeta">Remeber it's beta!</h2>
 
-            <p>
-                Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. 
-                I tested it on several Websites and it worked fine but there may (better: will!) be cases were it won't work.<br>
-                So please <a href="https://github.com/griffla/Kool-Swap/issues">report issues</a>.
-            </p> 
+        <div class="main row">
+            <div id="main" class="main-inner col-md-12">
+                <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span> Download on GitHub</a>
+                <h1>Good to know</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>How it works</h2>
+                        
+                        <p>
+                            After a Kool Swap trigger click the plugin creates a temporary container (swapBoxIn) and loads the target page contents inside. It gets the 
+                            coordinates of the defined swapBox to position it absolute before animating. After this the swapBox animates out and the swapBoxIn animates in.
+                            Title, HTML/BODY classes and ids of the called page will be transfered. At best there will be no HTML/CSS optimisation required. 
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 id="itsBeta">Remeber it's beta!</h2>
             
-            <h1><span aria-hidden="true" data-icon="&#xe00e;"></span>Tips & Examples</h1>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Topic</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                </thead>
+                        <p>
+                            Kool Swap should someday simply work on every website also on existing sites but it was only tested by myself yet. 
+                            I tested it on several Websites and it worked fine but there may (better: will!) be cases were it won't work.<br>
+                            So please <a href="https://github.com/griffla/Kool-Swap/issues">report issues</a>.
+                        </p> 
+                    </div>
+                </div>
                 
-                <tbody>
-                    <tr>
-                        <td>Bouncing Boxes</td>
-                        <td>Bouncing Boxes can be faded out/in on page swap. Consider the demo boxes at the bottom of the page and how they jump if they are not faded.</td>
-                        <td><a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Multiple Instances</td>
-                        <td>Use Kool Swap for sitewide functionality including history and title/class/id transfer and/or for content boxes on a page.</td>
-                        <td class="kool-swap"><a href="/demo/examples/multiple-instances.html">See an example</a></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Images</td>
-                        <td>Images are preloaded before the page swap by default. Set the option "checkForImages" to false if you don't need this.</td>
-                        <td class="kool-swap"><a href="/demo/examples/lots-of-images.html">See an example</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </section>
+                <h1>Tips &amp; Examples</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>Bouncing Boxes</td>
+                                    <td>Bouncing Boxes can be faded out/in on page swap. Consider the demo boxes at the bottom of the page and how they jump if they are not faded.</td>
+                                    <td><a href="/demo/examples/bouncing-boxes.html">See an example</a></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Multiple Instances</td>
+                                    <td>Use Kool Swap for sitewide functionality including history and title/class/id transfer and/or for content boxes on a page.</td>
+                                    <td class="kool-swap"><a href="/demo/examples/multiple-instances.html">See an example</a></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Images</td>
+                                    <td>Images are preloaded before the page swap by default. Set the option "preloadImages" to false if you don't need this.</td>
+                                    <td class="kool-swap"><a href="/demo/examples/lots-of-images.html">See an example</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-	    <footer>
-            <h2>This is Kool Swap!</h2>
-	        
+	    <footer class="clearfix">
 	        <nav>
-	            <h2>See also:</h2>
+                <h2>Take a look at this:</h2>
 	            <ul>
 	                <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
 	            </ul>

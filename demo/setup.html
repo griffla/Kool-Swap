@@ -8,6 +8,7 @@
     <meta name="description" content="Ajax page swap with history support and optional effects with jQuery Kool Swap!">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/kool-swap.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
@@ -19,122 +20,126 @@
 </head>
 
 <body>
-    <div class="tip" id="settings">
-        <h2>Swap type:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksFade" class="active tooltip" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
-            <button data-anim-type="ksBottomToTop" class="tooltip" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
-            <button data-anim-type="ksLeftToRight" class="tooltip" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
-            <button data-anim-type="ksTopToBottom" class="tooltip" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
-            <button data-anim-type="ksRightToLeft" class="tooltip" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
-        </div>
+			
+    <!-- a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a -->
+	<div class="container">
+
+		<header>
+	    	<div class="row">
+	    		<div class="col-md-7 col-sm-12">
+					<nav class="kool-swap clearfix">
+						<ul>
+							<li><a class="logo" href="/demo/">Kool Swap</a></li>
+							<li><a class="active" href="/demo/setup.html">Setup</a></li>
+							<li><a href="/demo/options.html">Documentation</a></li>
+							<li><a id="ksExamples" href="/demo/examples">How to use</a></li>
+						</ul>
+					</nav>
+				</div>
+	    		<div class="col-md-5 col-sm-12 text-center" id="settings">
+					
+			        <div class="button-box type clearfix">
+			            <button data-anim-type="ksFade" class="swap-btn type" title="Fade"><span aria-hidden="true" data-icon="&#xe02d;"></span></button>
+			            <button data-anim-type="ksBottomToTop" class="swap-btn type" title="Animate bottom to top"><span aria-hidden="true" data-icon="&#xe025;"></span></button>
+			            <button data-anim-type="ksLeftToRight" class="swap-btn type" title="Animate left to right"><span aria-hidden="true" data-icon="&#xe027;"></span></button>
+			            <button data-anim-type="ksTopToBottom" class="active swap-btn type" title="Animate top to bottom"><span aria-hidden="true" data-icon="&#xe02b;"></span></button>
+			            <button data-anim-type="ksRightToLeft" class="swap-btn type" title="Animate right to left"><span aria-hidden="true" data-icon="&#xe026;"></span></button>
+			        </div>
+			        
+			        <div class="button-box speed clearfix">
+			            <button data-anim-type="ksSlow" class="swap-btn speed" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
+			            <button data-anim-type="ksFast" class="swap-btn speed active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
+			            <button data-anim-type="ksUltraFast" class="swap-btn speed" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
+			        </div>
+					
+				</div>
+			</div>
+		</header>
+
+		<div class="main row">
+		    <div id="main" class="main-inner col-md-12">
+    			<a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span> Download on GitHub</a>
+		    	<div class="row">
+		    		<div class="col-md-12">
+				        <h1>Setup Kool Swap</h1>
+				        
+				        <h2>Include jQuery</h2>
+				        <pre>
+							<code>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;<br>&lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"&gt;&lt;/script&gt;</code>
+				        </pre>
+				
+				        <p class="info">
+				            <span aria-hidden="true" data-icon="&#xe004;"></span>
+				            Include jQuery UI if you're using easings for animation. Kool Swap actually only needs the jQuery UI effects core.
+				        </p> 
+				        
+				        <h2>Include the Kool Swap CSS and JavaScript</h2>
+				        <pre>
+				            <code>&lt;link rel="stylesheet" type="text/css" href="jquery.kool-swap/css/kool-swap.css"&gt;</code><br><code>&lt;script src="jquery.kool-swap/js/jquery.kool-swap.js"&gt;&lt;/script&gt;</code>
+				        </pre>
+				        
+				        <h1>Activation</h1>
+				        
+				        <h2>Sitewide use</h1>
+				            
+				        <p>With url change and history as well as title, id and class transfer.</p>
+				
+				        <div id="plugin-activation">
+				            <pre>
+				                <code>$.koolSwap({<br>&nbsp;&nbsp;&nbsp;swapBox : '#main',<br>});</code>
+				            </pre>
+				        </div>
+				
+				        <p class="warning">
+				            <span aria-hidden="true" data-icon="&#xe003;"></span>
+				            Kool Swap uses the ID from swapBox to load the contents from the next page in sitewide mode. Please be aware that the defined swapBox has an ID. An element with the same ID must exist on the target
+				            page.
+				        </p> 
+				        
+				        <h2 id="section-use">Section use</h2>
+				
+				        <div class="kool-swap" id="plugin-activation">
+				            <pre>
+				                <code>$('<em>Element within content swaps</em>').koolSwap({<br>&nbsp;&nbsp;&nbsp;swapTriggerBox : '<em>Element that contains the triggers</em>',<br>&nbsp;&nbsp;&nbsp;<a href="/demo/options.html#moveSwapBoxClasses">moveSwapBoxClasses</a> : true,<br>&nbsp;&nbsp;&nbsp;<a href="/demo/options.html#positionType">positionType</a> : 'absolute',<br>});</code>
+				            </pre>
+				            <a href="/demo/examples/multiple-instances.html">Read more about the section use</a>
+				        </div>
+				        
+				        <h1>Define triggers</h1>
+				        
+				        <p>You need to tell Kool Swap which links should trigger a kool swap.</p>
+				        
+				        <h2>Define triggers with option</h2>
+				
+				        <div id="triggers-with-option">
+				            <pre>
+				                <code>$.koolSwap({<br>&nbsp;&nbsp;&nbsp;swapBox : '#main',<br>&nbsp;&nbsp;&nbsp;swapTriggerBox: 'nav ul.main-menu'<br>});</code>
+				            </pre>
+				        </div>
+				        
+				        
+				        <h2>Define triggers with CSS class</h2>
+				        
+				        <p>The default <a href="options.html#swap-trigger">swapTrigger</a> is "a". All swapTriggers in a box with given class "kool-swap" will trigger a kool swap.</p>
+				
+				        <div id="triggers-with-class">
+				            <pre>
+				                <code>&lt;ul class="main-menu <b>kool-swap</b>"&gt;<br>&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;<br>&lt;/ul&gt;</code>
+				            </pre>
+				        </div>
+				        
+				        <h2>That's it!</h2>
+				        
+				        <p class="kool-swap">Use the <a href="options.html">options</a> to configure Kool Swap.</p>
+		    		
+		    		</div>
+		    	</div>
+	    	</div>
+    	</div>
         
-        <h2>Speed:</h2>
-       
-        <div class="buttons clear">
-            <button data-anim-type="ksSlow" title="Slow"><span aria-hidden="true" data-icon="&#xe010;"></span></button>
-            <button data-anim-type="ksFast" class="active" title="Fast"><span aria-hidden="true" data-icon="&#xe011;"></span></button>
-            <button data-anim-type="ksUltraFast" title="Ultra Fast"><span aria-hidden="true" data-icon="&#xe012;"></span></button>
-        </div>
-    </div>
-    <a id="dl" href="https://github.com/griffla/Kool-Swap"><span aria-hidden="true" data-icon="&#xe006;"></span><br>GitHub</a>
-        
-    <div id="main" class="main the-how">
-        <header>
-            <nav class="kool-swap">
-                <div class="tip" id="tipLeft">
-                    Navigate to see the plugin in action.
-                </div>
-    
-                <ul>
-                    <li><a id="ksIndex" href="/demo/index.html"><span aria-hidden="true" data-icon="&#xe00c;"></span>Kool Swap</a></li>
-                    <li><a class="active" id="/demo/ksHow" href="setup.html"><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</a></li>
-                    <li><a id="ksOptions" href="/demo/options.html"><span aria-hidden="true" data-icon="&#xe00f;"></span>Options, Events & Methods</a></li>
-                    <li><a id="ksExamples" href="/demo/examples"><span aria-hidden="true" data-icon="&#xe00e;"></span>How to use</a></li>
-                </ul>
-            </nav>
-        </header>
-	    
-        <section class="demobox">
-            <h1><span aria-hidden="true" data-icon="&#xe005;"></span>Setup</h1>
-            
-            <h2>Include jQuery. Include jQuery UI if you're using easings for animation</h2>
-            <pre>
-	            <code>
-	                &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;<br>
-                    &lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"&gt;&lt;/script&gt;
-                </code>
-            </pre>
-
-            <p class="info">
-                <span aria-hidden="true" data-icon="&#xe004;"></span>
-                Kool Swap actually only needs the jQuery UI effects core.
-            </p> 
-            
-            <h2>Include the Kool Swap javascript file</h2>
-            <pre>
-                <code>
-                    &lt;script src="jquery.kool-swap/js/jquery.kool-swap.js"&gt;&lt;/script&gt;
-                </code>
-            </pre>
-            
-            
-            <h2>Include the Kool Swap css file</h2>
-            <pre>
-                <code>
-	                &lt;link rel="stylesheet" type="text/css" href="jquery.kool-swap/css/kool-swap.css"&gt;
-                </code>
-            </pre>
-            
-            <h1>Activation</h1>
-            
-            <h2>Sitewide use</h1>
-                
-            <p>With url change and history as well as title, id and class transfer.</p>
-
-            <div id="plugin-activation">
-                <pre>
-                    <code>
-                        $.koolSwap({<br>
-                         &nbsp;&nbsp;&nbsp;swapBox : '#main',<br>
-                        });
-                    </code>
-                </pre>
-            </div>
-
-            <p class="warning">
-                <span aria-hidden="true" data-icon="&#xe003;"></span>
-                Kool Swap uses the ID from swapBox to load the contents from the next page in sitewide mode. Please be aware that the defined swapBox has an ID. An element with the same ID must exist on the target
-                page.
-            </p> 
-            
-            <h2>With selector</h2>
-
-            <div class="kool-swap" id="plugin-activation">
-                <pre>
-                    <code>
-                        $('<em>Element within content swaps</em>').koolSwap({<br>
-                        &nbsp;&nbsp;&nbsp;swapTriggerBox : '<em>Element that contains the triggers</em>',<br>
-                        &nbsp;&nbsp;&nbsp;<a href="/demo/options.html#moveSwapBoxClasses">moveSwapBoxClasses</a> : true,<br>
-                        &nbsp;&nbsp;&nbsp;<a href="/demo/options.html#positionType">positionType</a> : 'absolute',<br>
-                        });
-                    </code>
-                </pre>
-                <a href="/demo/examples/multiple-instances.html">Read more about use with selector</a>
-            </div>
-            
-            
-            <h2>That's it!</h2>
-            
-            <p class="kool-swap">Use the <a href="options.html">options</a> to configure Kool Swap.</p>
-        </section>
-        
-	    <footer>
-            <h2>This is Kool Swap!</h2>
-	        
+	    <footer class="clearfix">
 	        <nav>
-	            <h2>See also:</h2>
+	            <h2>Take a look at this:</h2>
 	            <ul>
 	                <li><a href="http://itsjoe.de/Aperture">jQuery Aperture</a></li>
 	            </ul>
