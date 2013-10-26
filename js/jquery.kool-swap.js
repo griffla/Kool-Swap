@@ -1,5 +1,5 @@
 /*
-Kool Swap v0.5
+Kool Swap v0.5.5
 by Joscha Schmidt - http://www.itsjoe.de
 
 For more information, visit:
@@ -135,7 +135,8 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				settings.swapBox = $(this); // use the given selector
 				
 				var swapTriggerBox = settings.swapTriggerBox,
-					swapTrigger = settings.swapTrigger;
+					swapTrigger = settings.swapTrigger,
+					pageSwap;
 
 				if (settings.history == true) {
 					var pageSwap = true;
@@ -311,7 +312,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			$(document)
 			.find(settings.bouncingBoxes)
 			.animate({opacity: 0}, 50, function() {
-				ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxIn);
+				ksMethods.ksPositionAndPrepare(settings, $swapTrigger, data, swapBoxIn, pageSwap);
 			});
 		},
 		ksSlideSiblings: function(settings, $swapTrigger, data, swapBox, swapBoxIn, pageSwap) {
@@ -507,7 +508,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						if (pageSwap) {
 							$(document).scrollTop(0); // Scroll the page to top to avoid flickering
 							ksMethods.ksSwitchClasses(htmlId, bodyId, htmlClass, bodyClass, pageTitle);
-							ksMethods.ksCheckForSiblings(settings);
+							ksMethods.ksCheckForSiblings(settings, pageSwap);
 						}
 					});
 				
@@ -522,7 +523,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						.attr('id', swapBoxId) // Give the swapBox id back to the final animated swapBoxIn
 						.removeClass('ks-swap-box-in');
 						
-						ksMethods.animationCallback(hash, settings);
+						ksMethods.animationCallback(hash, settings, pageSwap);
 					});
 			} else {
 				$swapBox
@@ -534,27 +535,27 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 					$swapBoxIn
 					.css({display: '', left: '', marginLeft: '', opacity: 0, position: '', top: '', width: '',}) // Reset all setted styles
 					.animate({opacity: 1}, settings.inDuration, function() {
-						ksMethods.animationCallback(hash, settings);
+						ksMethods.animationCallback(hash, settings, pageSwap);
 					})
 					.attr('id', swapBoxId).removeClass('ks-swap-box-in');
 				});
 			}
 		},
-		animationCallback: function(hash, settings) {
+		animationCallback: function(hash, settings, pageSwap) {
 			if (hash) {
 				$('html:not(:animated),body:not(:animated)').animate({scrollTop: $(hash).offset().top },'normal');
 			}
-			ksMethods.ksCheckForSiblings(settings);
+			ksMethods.ksCheckForSiblings(settings, pageSwap);
 		},
-		ksCheckForSiblings: function(settings) {
+		ksCheckForSiblings: function(settings, pageSwap) {
 			if (settings.bouncingBoxes) {
 				$(document)
 				.find(settings.bouncingBoxes)
 					.animate({opacity: 1}, 400, function() {
-						ksMethods.ksSwapCallback();
+						(pageSwap == true ? ksMethods.ksSwapCallback() : ksMethods.ksSwapSectionCallback());
 					});
 			} else {
-				ksMethods.ksSwapCallback();
+				(pageSwap ? ksMethods.ksSwapCallback() : ksMethods.ksSwapSectionCallback());
 			}
 		},
 		ksSwitchClasses : function(htmlId, bodyId, htmlClass, bodyClass, pageTitle) {
@@ -588,6 +589,9 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 				overflowX: 'auto',				
 			}); // Prevent scrollbars on animation
 			$(document).trigger('ksSwapCallback'); // Trigger the swap callback event
+		},
+		ksSwapSectionCallback: function() {
+			$(document).trigger('ksSwapSectionCallback'); // Trigger the swap callback event
 		},
 	};
 	
