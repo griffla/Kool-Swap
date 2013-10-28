@@ -5,14 +5,14 @@
     "keywords": [
         "ajax",
         "swap",
-        "change",
-        "page",
-        "animation",
 		"performance",
 		"speed",
+        "history",
+        "html5",
         "ui",
 		"popstate",
 		"pushstate"
+        "animation",
     ],
     "version": "0.5.5",
     "author": {
