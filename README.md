@@ -4,7 +4,7 @@ Kool Swap enables impressively ajax page load support with history for websites.
 
 by Joscha Schmidt
 
-Demo & Documentation: http://kool-swap.itsjoe.de/demo
+Demo & Documentation: http://kool-swap.joschaschmidt.de/demo
 
 License
 =======
