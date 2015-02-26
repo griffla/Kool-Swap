@@ -5,20 +5,20 @@
     "keywords": [
         "ajax",
         "swap",
-		"performance",
-		"speed",
+        "performance",
+        "speed",
         "history",
         "html5",
         "ui",
-		"popstate",
-		"pushstate"
-        "animation",
+        "popstate",
+        "pushstate",
+        "animation"
     ],
     "version": "0.5.5",
     "author": {
         "name": "Joscha Schmidt",
         "email" : "smith.griffla@gmail.com",
-        "url": "http://kool-swap.itsjoe.de/demo"
+        "url": "http://kool-swap.joschaschmidt.de/demo"
     },
     "licenses": [
         {
@@ -27,8 +27,8 @@
         }
     ],
     "bugs": "https://github.com/griffla/Kool-Swap/issues",
-    "homepage": "http://kool-swap.itsjoe.de/demo",
-    "demo": "http://kool-swap.itsjoe.de/demo",
+    "homepage": "http://kool-swap.joschaschmidt.de/demo",
+    "demo": "http://kool-swap.joschaschmidt.de/demo",
     "docs": "https://github.com/griffla/Kool-Swap",
     "download": "https://github.com/griffla/Kool-Swap",
     "dependencies": {
