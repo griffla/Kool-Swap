@@ -1,9 +1,9 @@
 /*
 Kool Swap v0.5.5
-by Joscha Schmidt - http://www.itsjoe.de
+by Joscha Schmidt - http://www.joschaschmidt.de
 
 For more information, visit:
-http://itsjoe.de/kool-swap/
+http://kool-swap.joschaschmidt.de
 
 Licensed under the Creative Commons Attribution 2.5 License - http://creativecommons.org/licenses/by/2.5/
 - free for use in both personal and commercial projects
@@ -508,7 +508,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						if (pageSwap) {
 							$(document).scrollTop(0); // Scroll the page to top to avoid flickering
 							ksMethods.ksSwitchClasses(htmlId, bodyId, htmlClass, bodyClass, pageTitle);
-							ksMethods.ksCheckForSiblings(settings, pageSwap);
+//							ksMethods.ksCheckForSiblings(settings, pageSwap); // This forced a twiced triggering of ksCheckForSiblings
 						}
 					});
 				
