@@ -1,5 +1,5 @@
 /*
-Kool Swap v0.5.5
+Kool Swap v0.5.6
 by Joscha Schmidt - http://www.joschaschmidt.de
 
 For more information, visit:
