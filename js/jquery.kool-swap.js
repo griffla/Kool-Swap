@@ -508,7 +508,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 						if (pageSwap) {
 							$(document).scrollTop(0); // Scroll the page to top to avoid flickering
 							ksMethods.ksSwitchClasses(htmlId, bodyId, htmlClass, bodyClass, pageTitle);
-							ksMethods.ksCheckForSiblings(settings, pageSwap);
+//							ksMethods.ksCheckForSiblings(settings, pageSwap); // This forced a twiced triggering of ksCheckForSiblings
 						}
 					});
 				
