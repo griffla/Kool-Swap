@@ -567,7 +567,7 @@ Licensed under the Creative Commons Attribution 2.5 License - http://creativecom
 			(bodyId ? $('body').attr('id', bodyId[1]) : ''); // Add IDs from the target page 
 			(htmlClass ? $('html').addClass(htmlClass[1]) : ''); // Add classes from the target page 
 			(bodyClass ? $('body').addClass(bodyClass[1]) : ''); // Add classes from the target page 
-			(pageTitle ? $('title').text(pageTitle[1]) : '');
+			(pageTitle ? $('title').html(pageTitle[1]) : '');
 		},
 		ksCreateLoadBox: function() {
 			if (!$('#ks-loading-box').length) {
