@@ -1,0 +1,16 @@
+{
+  "name": "Kool-Swap",
+  "version": "0.5.5",
+  "homepage": "http://kool-swap.joschaschmidt.de/",
+  "authors": [
+    "griffla"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
